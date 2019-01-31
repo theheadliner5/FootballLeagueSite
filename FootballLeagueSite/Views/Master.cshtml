@@ -1,37 +1,56 @@
 ﻿@inherits UmbracoTemplatePage
 @{
     Layout = null;
-
+ 
     // Get basic design settings from the homepage
     var home = (Home)Model.Content.Site();
     var colorTheme = Umbraco.GetPreValueAsString(home.ColorTheme);
     var font = Umbraco.GetPreValueAsString(home.Font);
 }
-
+ 
 <!doctype html>
-<html>
+<html ng-app="umbracoApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+ 
     <title>@Model.Content.Name - @home.Sitename</title>
     <meta name="description" content="">
     <meta name="author" content="">
-
+ 
     <link rel="stylesheet" href="@Url.Content("~/css/umbraco-starterkit-style.css")" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
+ 
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- angular -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular-resource.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular-route.js"></script>
+    <!-- angular material -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+    
+    <script src="/scripts/app.js"></script>
+    <script src="/scripts/controllers.js"></script>
     @RenderSection("Header", required: false)
 </head>
-
+ 
 <body class="frontpage theme-font-@font theme-color-@colorTheme">
     <div class="mobile-nav">
         <nav class="nav-bar">
             @Html.Partial("~/views/partials/navigation/topNavigation.cshtml")
         </nav>
     </div>
-
+ 
     <header class="header">
-
+ 
         <div class="logo">
             @if (home.SiteLogo != null && !string.IsNullOrEmpty(home.SiteLogo.Url))
             {
@@ -44,23 +63,261 @@
                 <a class="nav-link nav-link--home nav-link--home__text logo-text" href="/">@home.Sitename</a>
             }
         </div>
-
+ 
         <nav class="nav-bar top-nav">
             @Html.Partial("~/Views/Partials/Navigation/TopNavigation.cshtml")
         </nav>
-
+ 
         <div class="mobile-nav-handler">
             <div class="hamburger lines" id="toggle-nav">
                 <span></span>
             </div>
         </div>
-
+ 
     </header>
-
     <main>
+ 
         @RenderBody()
+        <div ng-controller="matchCtrl">
+            <div class="row">
+                <div class="col-2"></div>
+        
+                <div class="col-8">
+            
+                    <div ng-cloak>
+                      <md-content>
+                        <md-tabs md-dynamic-height md-border-bottom>
+            
+                          <md-tab label="Ten tydzień">
+                            <md-content class="md-padding text-center">
+            
+                                <div class="row" style="font-weight: bold;">
+            
+                                    <div class="col-3">
+                                        <p>Dzień i godzina</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>Drużyna gospodarzy</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>Drużyna gości</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>Wynik</p>
+                                    </div>
+            
+                                </div>
+            
+                                <div ng-repeat="obj in weekMatches" >
+            
+                                    <div class="row" ng-show="weekMatches != 'empty'" ng-click="" data-toggle="collapse" data-target="#collapse[[ obj.match_id ]]" aria-expanded="false" aria-controls="collapse[[ obj.match_id ]]">
+            
+                                        <div class="col-3">
+                                            <p>[[ obj.match_date ]] [[ obj.match_time ]]</p>
+                                        </div>
+            
+                                        <div class="col-3">
+                                            <p>[[ obj.match_hometeam_name ]]</p>
+                                        </div>
+            
+                                        <div class="col-3">
+                                            <p>[[ obj.match_awayteam_name ]]</p>
+                                        </div>
+            
+                                        <div class="col-3">
+                                            <p ng-if="obj.match_status">[[ obj.match_hometeam_score ]] : [[ obj.match_awayteam_score ]]</p>
+                                            <p ng-if="!obj.match_status">0 : 0</p>
+                                        </div>
+            
+                                    </div>
+            
+                                    <div class="collapse" id="collapse[[ obj.match_id ]]" ng-show="!obj.goalscorer==[]">
+                                          <div class="">
+            
+                                            <h2 class="text-center">Bramki</h2>
+            
+                                            <div class="row" style="font-weight: bold;">
+            
+                                                <div class="col-3">
+                                                    <p>Czas</p>
+                                                </div>
+            
+                                                <div class="col-3">
+                                                    <p>Strzelec drużyny gospodarzy</p>
+                                                </div>
+            
+                                                <div class="col-3">
+                                                    <p>Strzelec drużyny gości</p>
+                                                </div>
+            
+                                                <div class="col-3">
+                                                    <p>Wynik</p>
+                                                </div>
+            
+                                            </div>
+            
+                                            <div class="row" ng-repeat="goal in obj.goalscorer">
+            
+                                                <div class="col-3">
+                                                    <p>[[ goal.time ]]</p>
+                                                </div>
+            
+                                                <div class="col-3">
+                                                    <p>[[ goal.home_scorer ]]</p>
+                                                </div>
+            
+                                                <div class="col-3">
+                                                    <p>[[ goal.away_scorer ]]</p>
+                                                </div>
+            
+                                                <div class="col-3">
+                                                    <p>[[ goal.score ]]</p>
+                                                </div>
+            
+                                             </div>
+            
+                                          </div>
+                                        </div>
+            
+                                </div>
+            
+                                <div ng-show="weekMatches=='empty'">
+                                    <h1 class="text-center">Brak meczy na ten tydzień</h1>
+                                </div>
+            
+                            </md-content>
+                          </md-tab>
+            
+                          <md-tab label="Dzisiaj" ng-click="getTodayMatches()">
+                            <md-content class="md-padding">
+            
+                              <div class="row" style="font-weight: bold;">
+            
+                                    <div class="col-3">
+                                        <p>Dzień i godzina</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>Drużyna gospodarzy</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>Drużyna gości</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>Wynik</p>
+                                    </div>
+            
+                                </div>
+            
+                                <div class="row" ng-repeat="obj in todayMatches" ng-show="todayMatches != 'empty'">
+            
+                                    <div class="col-3">
+                                        <p>[[ obj.match_date ]] [[ obj.match_time ]]</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>[[ obj.match_hometeam_name ]]</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>[[ obj.match_awayteam_name ]]</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p ng-if="obj.match_status">[[ obj.match_hometeam_score ]] : [[ obj.match_awayteam_score ]]</p>
+                                        <p ng-if="!obj.match_status">0 : 0</p>
+                                    </div>
+            
+                                </div>
+            
+                                <div ng-show="todayMatches=='empty'">
+                                    <h1 class="text-center">Brak meczy na dzisiaj</h1>
+                                </div>
+            
+                            </md-content>
+                          </md-tab>
+            
+                          <md-tab label="Jutro" ng-click="getTomorrowMatches()">
+                            <md-content class="md-padding">
+            
+                              <div class="row" style="font-weight: bold;">
+            
+                                    <div class="col-3">
+                                        <p>Dzień i godzina</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>Drużyna gospodarzy</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>Drużyna gości</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>Wynik</p>
+                                    </div>
+            
+                                </div>
+                                <div class="row" ng-repeat="obj in tomorrowMatches"  ng-show="tomorrowMatches!='empty'">
+            
+                                    <div class="col-3">
+                                       <p>[[ obj.match_date ]] [[ obj.match_time ]]</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>[[ obj.match_hometeam_name ]]</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>[[ obj.match_awayteam_name ]]</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p ng-if="obj.match_status">[[ obj.match_hometeam_score ]] : [[ obj.match_awayteam_score ]]</p>
+                                        <p ng-if="!obj.match_status">0 : 0</p>
+                                    </div>
+            
+            
+                                </div>
+            
+                                <div ng-show="tomorrowMatches=='empty'">
+                                    <h1 class="text-center">Brak meczy na jutro</h1>
+                                </div>
+            
+                            </md-content>
+                          </md-tab>
+            
+                        </md-tabs>
+                      </md-content>
+                    </div>
+            
+                </div>
+        
+                <div class="col-2" ng-cloak>
+            
+                  <h1 class="md-title">Wybierz ligę</h1>
+                  <div layout="row">
+                    <md-input-container>
+                      <label>Ligi</label>
+                      <md-select ng-model="selectedLeague" ng-change="refreshMatches()">
+                        <md-optgroup label="Ligi">
+                          <md-option ng-repeat="league in leagueList" ng-value="league.league_id">[[ league.league_name ]]</md-option>
+                        </md-optgroup>
+                      </md-select>
+                    </md-input-container>
+                  </div>
+                </div>
+        
+            </div>
+        </div>
     </main>
-
+ 
     <footer class="section--themed">
         <div class="container">
             <div class="row">
@@ -70,12 +327,13 @@
             </div>
         </div>
     </footer>
-
+ 
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
     <script src="@Url.Content("~/scripts/umbraco-starterkit-app.js")"></script>
-
+ 
 </body>
-
+ 
 </html>
+ 
