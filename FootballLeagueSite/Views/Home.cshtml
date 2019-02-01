@@ -22,7 +22,255 @@
     @Html.GetGridHtml(Model.Content, "bodyText", "bootstrap3-fluid")
 </section>
 
-
+ <!-- MatchList -->
+        <div ng-controller="matchCtrl">
+            <div class="row">
+                <div class="col-2"></div>
+        
+                <div class="col-8">
+            
+                    <div ng-cloak>
+                      <md-content>
+                        <md-tabs md-dynamic-height md-border-bottom>
+            
+                          <md-tab label="Ten tydzień">
+                            <md-content class="md-padding text-center">
+            
+                                <div class="row" style="font-weight: bold;">
+            
+                                    <div class="col-2">
+                                        <p>Dzień i godzina</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>Drużyna gospodarzy</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>Drużyna gości</p>
+                                    </div>
+            
+                                    <div class="col-2">
+                                        <p>Wynik</p>
+                                    </div>
+                                    
+                                    <div class="col-2">
+                                        <p>Szczegóły</p>
+                                    </div>
+            
+                                </div>
+            
+                                <div ng-repeat="obj in weekMatches" >
+            
+                                    <div class="row" ng-show="weekMatches != 'empty'" ng-click="" data-toggle="collapse" data-target="#collapse[[ obj.match_id ]]" aria-expanded="false" aria-controls="collapse[[ obj.match_id ]]">
+            
+                                        <div class="col-2">
+                                            <p>[[ obj.match_date ]] [[ obj.match_time ]]</p>
+                                        </div>
+            
+                                        <div class="col-3">
+                                            <p>[[ obj.match_hometeam_name ]]</p>
+                                        </div>
+            
+                                        <div class="col-3">
+                                            <p>[[ obj.match_awayteam_name ]]</p>
+                                        </div>
+                                        
+                                        <div class="col-2">
+                                            <p ng-if="obj.match_status">[[ obj.match_hometeam_score ]] : [[ obj.match_awayteam_score ]]</p>
+                                            <p ng-if="!obj.match_status">-</p>
+                                        </div>
+                                        
+                                        <div class="col-2">
+                                            <p ng-if="obj.match_status"><a href="/match-list-page/[[ obj.match_id ]]/">Wiecej</a></p>
+                                            <p ng-if="!obj.match_status">Brak</p>
+                                        </div>
+            
+                                    </div>
+            
+                                    <div class="collapse" id="collapse[[ obj.match_id ]]" ng-show="!obj.goalscorer==[]">
+                                          <div class="">
+            
+                                            <h2 class="text-center">Bramki</h2>
+            
+                                            <div class="row" style="font-weight: bold;">
+            
+                                                <div class="col-3">
+                                                    <p>Czas</p>
+                                                </div>
+            
+                                                <div class="col-3">
+                                                    <p>Strzelec drużyny gospodarzy</p>
+                                                </div>
+            
+                                                <div class="col-3">
+                                                    <p>Strzelec drużyny gości</p>
+                                                </div>
+            
+                                                <div class="col-3">
+                                                    <p>Wynik</p>
+                                                </div>
+            
+                                            </div>
+            
+                                            <div class="row" ng-repeat="goal in obj.goalscorer">
+            
+                                                <div class="col-3">
+                                                    <p>[[ goal.time ]]</p>
+                                                </div>
+            
+                                                <div class="col-3">
+                                                    <p>[[ goal.home_scorer ]]</p>
+                                                </div>
+            
+                                                <div class="col-3">
+                                                    <p>[[ goal.away_scorer ]]</p>
+                                                </div>
+            
+                                                <div class="col-3">
+                                                    <p>[[ goal.score ]]</p>
+                                                </div>
+            
+                                             </div>
+            
+                                          </div>
+                                        </div>
+            
+                                </div>
+            
+                                <div ng-show="weekMatches=='empty'">
+                                    <h1 class="text-center">Brak meczy na ten tydzień</h1>
+                                </div>
+            
+                            </md-content>
+                          </md-tab>
+            
+                          <md-tab label="Dzisiaj" ng-click="getTodayMatches()">
+                            <md-content class="md-padding">
+            
+                              <div class="row" style="font-weight: bold;">
+            
+                                    <div class="col-3">
+                                        <p>Dzień i godzina</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>Drużyna gospodarzy</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>Drużyna gości</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>Wynik</p>
+                                    </div>
+            
+                                </div>
+            
+                                <div class="row" ng-repeat="obj in todayMatches" ng-show="todayMatches != 'empty'">
+            
+                                    <div class="col-3">
+                                        <p>[[ obj.match_date ]] [[ obj.match_time ]]</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>[[ obj.match_hometeam_name ]]</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>[[ obj.match_awayteam_name ]]</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p ng-if="obj.match_status">[[ obj.match_hometeam_score ]] : [[ obj.match_awayteam_score ]]</p>
+                                        <p ng-if="!obj.match_status">0 : 0</p>
+                                    </div>
+            
+                                </div>
+            
+                                <div ng-show="todayMatches=='empty'">
+                                    <h1 class="text-center">Brak meczy na dzisiaj</h1>
+                                </div>
+            
+                            </md-content>
+                          </md-tab>
+            
+                          <md-tab label="Jutro" ng-click="getTomorrowMatches()">
+                            <md-content class="md-padding">
+            
+                              <div class="row" style="font-weight: bold;">
+            
+                                    <div class="col-3">
+                                        <p>Dzień i godzina</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>Drużyna gospodarzy</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>Drużyna gości</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>Wynik</p>
+                                    </div>
+            
+                                </div>
+                                <div class="row" ng-repeat="obj in tomorrowMatches"  ng-show="tomorrowMatches!='empty'">
+            
+                                    <div class="col-3">
+                                       <p>[[ obj.match_date ]] [[ obj.match_time ]]</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>[[ obj.match_hometeam_name ]]</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p>[[ obj.match_awayteam_name ]]</p>
+                                    </div>
+            
+                                    <div class="col-3">
+                                        <p ng-if="obj.match_status">[[ obj.match_hometeam_score ]] : [[ obj.match_awayteam_score ]]</p>
+                                        <p ng-if="!obj.match_status">0 : 0</p>
+                                    </div>
+            
+            
+                                </div>
+            
+                                <div ng-show="tomorrowMatches=='empty'">
+                                    <h1 class="text-center">Brak meczy na jutro</h1>
+                                </div>
+            
+                            </md-content>
+                          </md-tab>
+            
+                        </md-tabs>
+                      </md-content>
+                    </div>
+            
+                </div>
+        
+                <div class="col-2" ng-cloak>
+            
+                  <h1 class="md-title">Wybierz ligę</h1>
+                  <div layout="row">
+                    <md-input-container>
+                      <label>Ligi</label>
+                      <md-select ng-model="selectedLeague" ng-change="refreshMatches()">
+                        <md-optgroup label="Ligi">
+                          <md-option ng-repeat="league in leagueList" ng-value="league.league_id">[[ league.league_name ]]</md-option>
+                        </md-optgroup>
+                      </md-select>
+                    </md-input-container>
+                  </div>
+                </div>
+        
+            </div>
+            </div>
+            <!-- MatchList -->
 <section class="section section--themed">
 
     <div class="container">
