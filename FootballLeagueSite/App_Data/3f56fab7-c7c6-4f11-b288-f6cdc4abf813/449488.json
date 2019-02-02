@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "1066245",
+    "ThreadId": "449488",
+    "Html": "Hello, \r<br />\nThank you for this lovely package.\r<br />\n<br />\nI have a question about the &quot;FullTextSearch.config&quot; option for &lt;DefaultRenderer&gt;. According to your documentation, it seems that to use the recommended value of &quot;HTTP&quot;, the website's domain name needs to be specified in &lt;HttpHost&gt;. I was wondering how/if this would work for a website with multiple possible domain names (assigned via the &quot;umbraco hostnames&quot; functionality). For instance, development and production domains, or in multi-site environments, separate domain names specified for each rootnode.\r<br />\n<br />\nIn one of these cases, what should the value of &lt;HttpHost&gt; be?\r<br />\n<br />\nThanks, \r<br />\nHeather<br />\n",
+    "PostedDate": "2013-07-09T11:23:18.023-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1066509",
+    "ThreadId": "449488",
+    "Html": "Hi Heather\r<br />\n<br />\nSetting the &quot;HTTP&quot; value, will construct a URL for each node id and use WebRequest to get the html response rendered for each URL. This html is then used to index that node's content. This URL is making use of the <strong>umbpageid</strong> querystring set to the value of the current node id. Irrespective of the URL, as long as <strong>umbpageid</strong> is set, Umbraco will return that node rendered in its template. It seems this is also the case across multiple Umbraco hostnames.\r<br />\n<br />\nFor example, if you have the following content structure:\r<br />\n<br />\nContent\r<br />\n--<strong>domain1</strong>.com (root node with hostname)\r<br />\n---page1 (<strong>id = 1</strong>)\r<br />\n--<strong>domain2</strong>.com (root node with hostname)\r<br />\n---page2\r<br />\n<br />\nThen the following URLs will all return the same html (for page1):\r<br />\n<strong>domain1</strong>.com/default.aspx?umbpageid=1\r<br />\n<strong>domain2</strong>.com/default.aspx?umbpageid=1\r<br />\n<br />\nThis is because umbpageid is set to 1 which will render node with id 1 (irrespective of the rest of the URL).\r<br />\n<br />\nFullTextSearch is using &quot;HttpUrl&quot; and &quot;HttpHost&quot; to construct this URL used by WebRequest for each node id. For example, if only &quot;HttpUrl&quot; is specified as follows: domain1.com/default.aspx - then these URLs will have the following format: domain1.com/default.aspx?umbpageid=x. If you also specify &quot;HttpHost&quot;, then this host name will be assigned to the WebRequest's &quot;Host&quot; value.\r<br />\n<br />\nHowever because the URL is using <strong>umbpageid</strong>, the host name and URL path doesn't really matter, since <strong>umbpageid</strong> will return the html of id anyway. \r<br />\n<br />\nSo the answer should be: as long as the &quot;HttpHost&quot; value entered matches one of your Umbraco hostnames (i.e. the URL with your host and the umbpageid query string actually exists), it should index all pages and not only those for the specified hostname in &quot;HttpHost&quot;. You also don't need to specify each host name. If you're using &quot;HttpHost&quot;, just ensure it matches one of you host names. If you're not using &quot;HttpHost&quot;, ensure your &quot;HttpUrl&quot;'s host matches one of your host names.\r<br />\n<br />\nLastly, do not confuse this with searching subsets of your site only, for example having a multi-lingual site (each in its own root folder with hostname) and wanting to implement a separate search for each where it would only index content for that language. Currently FullTextSearch indexes the entire content structure. However it should be possible to add additional functionality to limit the search results to subdomains/parent nodes only.\r<br />\n<br />\nI hope this helps.\r<br />\n<br />\nRegards,\r<br />\nRigardt\r<br />\nGovernor Technology<br />\n",
+    "PostedDate": "2013-07-10T04:47:14.03-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1067065",
+    "ThreadId": "449488",
+    "Html": "Thanks, Rigardt, for the detailed explanation. I'm sure my ignorance about the inner-workings of Examine/Lucene is becoming obvious to you :-).\r<br />\n<br />\nWhat is interesting is that I am working on a &quot;local&quot; copy of the website files (for easier VS debugging, etc), but access the same umbraco db as my main &quot;dev&quot; server environment, and sync the files between my local and dev environment daily. \r<br />\n<br />\nI have both the &quot;.local&quot; and &quot;dev&quot; domains specified via umbraco Hostnames.\r<br />\n<br />\nI used the &quot;dev&quot; domain name in the FullTextSearch.config file, and when viewing the site on my &quot;.local&quot; domain, it seems that only the nodenames have been indexed, and I don't get summary information below the results, but when I view the site on the dev environment's domain, matching the domain used in the config file, the results include the summaries, etc. \r<br />\n<br />\nIf I change the domain name in the config file to the &quot;.local&quot; domain and reindex on my .local environment, I can then see the full results on the .local site. I suppose this means I will need to remember to update the domain name when I move the files to a production environment on yet another domain. :-)\r<br />\n<br />\nAlso, point taken about the multi-lingual/&quot;per-site&quot; searching. I imagine that there could be a way to just limit the displayed search results to include only pages underneath a certain &quot;ancestor&quot; root node...<br />\n",
+    "PostedDate": "2013-07-11T07:36:34.087-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1067134",
+    "ThreadId": "449488",
+    "Html": "Hi Heather\r<br />\n<br />\nAt first thoughts, I would've expected it to still find the summary text for each result, even if your searching on your local domain but with the config pointing to your dev domain. What this would mean is for each node id indexed locally, it would construct a dev url with the umbpageid query string to get the rendered html for indexing for that local node which is also what is used for the summary text. FullTextSearch will not prevent you from doing this, however I would not recommend having the domain in the config different from the actual domain your on as it wasn't designed and tested to behave in this way. \r<br />\n<br />\nThere might also be other factors involved when syncing between two environments with a shared database for example the actual Lucene index files generated, the umbraco.config etc.\r<br />\n<br />\nI know it introduces a second step to change the config domain as you switch between the domains but this would be the safer option if possible. Like you said, you'll have to do this when going live as well.\r<br />\n<br />\nWe can always look into adding a few enhancements which can automate this process more in the future.\r<br />\n<br />\nLet me know if you have any other issues regarding this topic.\r<br />\n<br />\nBest regards,\r<br />\nRigardt\r<br />\nGovernor Technology<br />\n",
+    "PostedDate": "2013-07-11T09:57:33.45-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1069679",
+    "ThreadId": "449488",
+    "Html": "Hi Rigardt,\r<br />\n<br />\nI wonder if it might be possible to have the option of using a web.config value:\r<br />\n&lt;add key=&quot;FullTextSearchHttpHost&quot; value=&quot;mysite.com&quot;/&gt;\r<br />\n to override the &quot;&lt;HttpHost&gt;&quot; value in the FullTextSearch.config, if provided.\r<br />\n<br />\nSince environment-level values are often changed in the web.config (sql connection string, smtp info, etc), it would make sense to allow it to be specified there.\r<br />\n<br />\nHeather<br />\n",
+    "PostedDate": "2013-07-17T12:19:35.287-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1071124",
+    "ThreadId": "449488",
+    "Html": "Hi Heather\r<br />\n<br />\nYes, that would make sense. Thanks for the suggestion - I'll add it in and upload a new version shortly.\r<br />\n<br />\nRegards,\r<br />\nRigardt<br />\n",
+    "PostedDate": "2013-07-22T01:18:59.323-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1071833",
+    "ThreadId": "449488",
+    "Html": "Hi Heather\r<br />\n<br />\nWe've released a new version with the requested functionality. You can now add either or of the following web.config app settings which will override those in FullTextSearch.config:\r<br />\n<br />\n1) FullTextSearchHttpUrl\r<br />\n2) FullTextSearchHttpHost\r<br />\n<br />\nPlease refer to you appropriate version of FullTextSearch from the following: 4.7.1 / 4.8.1 / 6.0.1\r<br />\n<br />\nBest regards,\r<br />\nRigardt\r<br />\nGovernor Technology<br />\n",
+    "PostedDate": "2013-07-23T09:01:59.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1071907",
+    "ThreadId": "449488",
+    "Html": "Awesome! Thanks for this :-)<br />\n<br />\nA question about updating... Did you only change the .dll file? perhaps I could just &quot;patch&quot; rather than re-install the package, by renaming the included file from &quot;7fe6c7fe-2b08-4872-90ef-24272abc56a8.dll&quot; to &quot;Governor.Umbraco.FullTextSearch.dll&quot; and adding to the bin folder?<br />\n",
+    "PostedDate": "2013-07-23T12:33:43.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1072147",
+    "ThreadId": "449488",
+    "Html": "Hi Heather\r<br />\n<br />\nYes, you should be able to just drop in the new DLL as suggested. Please make sure to backup the original one first. This release also contains a small update in the FullTextSearch.cshtml which I will indicate in the other related issue if you wanted to apply this manually as well.\r<br />\n<br />\nRegards,\r<br />\nRigardt<br />\n",
+    "PostedDate": "2013-07-24T01:26:06.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1072400",
+    "ThreadId": "449488",
+    "Html": "Thanks, I was able to complete the manual update as well.<br />\n",
+    "PostedDate": "2013-07-24T10:15:24.657-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

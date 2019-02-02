@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "638377",
+    "ThreadId": "264168",
+    "Html": "<p>Hi. First thing I need to say, it that I think this is a great module to Umbraco. Rendering and catching whole html is a great idea.</p>\n<p>However I need to ask, if it is possible, or will be in near future to crawl for Umraco Full Text Search Module.</p>\n<p>I have a site that uses some macros and user controls. This controls render some links, which should be indexed.</p>\n<p>Scenario:</p>\n<p>www.mypage,.com/listOfBooks.aspx</p>\n<p>This site has grid with lets say 10 books, and links direct to:</p>\n<p>www.mypage,.com/Book.aspx?id=X</p>\n<p>where X is an Id of book. This page has, user control that renders book details depending on id.</p>\n<p>&nbsp;</p>\n<p>Now, i think, search will only index 2 pages. instead of 12 (www.mypage,.com/Book.aspx?id=1, www.mypage,.com/Book.aspx?id=2, etc...)</p>\n<p>&nbsp;</p>\n<p>Is this feature availible, or will be?</p>\n<p>Thanks.</p>\n<p>Mike.</p>",
+    "PostedDate": "2011-07-06T13:58:53.64-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "640312",
+    "ThreadId": "264168",
+    "Html": "<p>Hi Mike, thanks for the kind words.</p>\r\n<p>Searching this kind of page is definitely problematic at the moment. It's something that needs to be addressed. But I'm not sure of the best way to approach it.</p>\r\n<p>I'm reluctant to implement a crawler, because this will break the relationship between nodes in umbraco and in the index, meaning it might become necessary to re-index large portions of a site any time a single node changes. It would also add significant complexity to the package.</p>\r\n<p>But you're right that there needs to be a way to index this kind of content. When I have some time I'll look at adding this, hopefully in the near future, but I can't promise when.</p>\r\n<p>In the meantime you could look at overriding the renderer for the node type of book.aspx from your own code. It might be possible to add the additional nodes to the search you need from there. See the <a href=\"http://fulltextsearch.codeplex.com/wikipage?title=Advanced%20Customisation\">advanced customisation</a> docs.</p>",
+    "PostedDate": "2011-07-11T02:13:46.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "638206",
+    "ThreadId": "264116",
+    "Html": "\r\n<p>First of all, I've been testing the Full Text Search for Umbraco package and it's great!</p>\r\n<p>I do have one question/request:</p>\r\n<p>Is it possible to add JUST the search form to a template? If so, what steps would I need to take to make that happen?</p>\r\n<p>I'm new to Umbraco, so forgive me if there's an obvious answer...</p>\r\n",
+    "PostedDate": "2011-07-06T08:39:18.207-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "638293",
+    "ThreadId": "264116",
+    "Html": "<p>You mean a search box? Or am I reading that wrong?</p>\r\n<p>To add a search box just add a form to any page that submits to the search page with an input named \"search\", so for example...\r\n<div style=\"color: black; background-color: white;\">\r\n<pre><span style=\"color: blue;\">&lt;</span><span style=\"color: #a31515;\">form</span> <span style=\"color: red;\">action</span><span style=\"color: blue;\">=</span><span style=\"color: blue;\">\"/my-search-page.aspx\"</span> <span style=\"color: red;\">method</span><span style=\"color: blue;\">=</span><span style=\"color: blue;\">\"get\"</span> <span style=\"color: red;\">class</span><span style=\"color: blue;\">=</span><span style=\"color: blue;\">\"fulltextsearch_form\"</span><span style=\"color: blue;\">&gt;</span>\r\n<span style=\"color: blue;\">&lt;</span><span style=\"color: #a31515;\">div</span> <span style=\"color: red;\">class</span><span style=\"color: blue;\">=</span><span style=\"color: blue;\">\"searchbox fulltextsearchbox\"</span><span style=\"color: blue;\">&gt;</span>\r\n<span style=\"color: blue;\">&lt;</span><span style=\"color: #a31515;\">input</span> <span style=\"color: red;\">type</span><span style=\"color: blue;\">=</span><span style=\"color: blue;\">\"text\"</span> <span style=\"color: red;\">value</span><span style=\"color: blue;\">=</span><span style=\"color: blue;\">\"\" name=\"Search\"</span> <span style=\"color: red;\">class</span><span style=\"color: blue;\">=</span><span style=\"color: blue;\">\"fulltextsearch_searchbox textbox\"</span> <span style=\"color: red;\">id</span><span style=\"color: blue;\">=</span><span style=\"color: blue;\">\"search\"</span><span style=\"color: blue;\">&gt;</span>\r\n<span style=\"color: blue;\">&lt;</span><span style=\"color: #a31515;\">input</span> <span style=\"color: red;\">type</span><span style=\"color: blue;\">=</span><span style=\"color: blue;\">\"submit\"</span> <span style=\"color: red;\">value</span><span style=\"color: blue;\">=</span><span style=\"color: blue;\">\"Search\"</span> <span style=\"color: blue;\">&gt;</span>\r\n<span style=\"color: blue;\">&lt;/</span><span style=\"color: #a31515;\">div</span><span style=\"color: blue;\">&gt;</span>\r\n<span style=\"color: blue;\">&lt;/</span><span style=\"color: #a31515;\">form</span><span style=\"color: blue;\">&gt;</span>\r\n</pre>\r\n</div>\r\n</p>\r\n<p>Point the action at the correct URL for your search page. If necessary change the various classes/ids to fit in with your design, and when the form is submitted the user should see their search results.</p>",
+    "PostedDate": "2011-07-06T11:36:01.063-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

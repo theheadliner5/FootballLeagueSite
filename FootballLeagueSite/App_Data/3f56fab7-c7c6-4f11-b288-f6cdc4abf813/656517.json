@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1479213",
+    "ThreadId": "656517",
+    "Html": "Hi,\r<br />\n<br />\nWe have used Umbraco Full Text Search 6.1.2 integrated in our umbraco 6.1.3 Website, it's also integrated with Polyglot 1.6.1 package and implemented for Multi-Language, but it serached with Chinese Searchwords and found nothing, although that Chinese Searchwords are absolutely in the  Web site. With its eng. Searchwords it will be found.\r<br />\n<br />\nDo you have Idea how to work it? Is Umbraco Full Text Search able to Uni-code search?\r<br />\n<br />\nThanks a lot!<br />\n",
+    "PostedDate": "2016-07-18T07:52:14.693-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

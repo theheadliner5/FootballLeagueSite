@@ -1,0 +1,76 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "This issue has been resolved.",
+    "ClosedDate": "2013-07-03T03:18:09.043-07:00",
+    "CommentCount": 9,
+    "Custom": "",
+    "Description": "",
+    "LastUpdatedDate": "2013-07-03T03:18:09.043-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "fulltextsearch",
+    "ReportedDate": "2013-05-15T06:15:15.743-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Lucene.Net.dll version mismatch",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 1270
+  },
+  "FileAttachments": [
+    {
+      "FileId": 701342,
+      "FileName": "fulltextsearch-18413-repaired.zip",
+      "DownloadUrl": ".\\701342"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Yes, that's correct. We originally built the package for Umbraco 4.7 and need to bring it up to date. One of our developers is due to look at this in the next few days so we will post an updated build as soon as we can.",
+      "PostedDate": "2013-05-15T06:39:17.83-07:00",
+      "Id": 105457
+    },
+    {
+      "Message": "Hi jv_getmore. \r\n\r\nThanks for your feedback we are continuing our work on Full Text Search and will let you know when it is completed. \r\n\r\nThanks, \r\n\r\nTom\r\n\r\nGovernor Technology",
+      "PostedDate": "2013-06-05T07:15:05.023-07:00",
+      "Id": 105460
+    },
+    {
+      "Message": "I have the same issue, I can't login into Umbraco anymore (got the error in the whole page so I can't install the repaired versions mentioned here). How can I solve this issue?",
+      "PostedDate": "2013-06-27T12:34:26.023-07:00",
+      "Id": 105462
+    },
+    {
+      "Message": "Hi Boborc\r\n\r\nPlease remove the following files from your bin folder, which should prevent the error from occurring in the backend:\r\n\r\nFullTextSearch.dllHighlighter.Net.dll\r\n\r\nOnce done, you can uninstall the package as usual.\r\n\r\nWe're working on providing updated versions of the package which will be compatible with all recent Umbraco versions. These will be available soon.\r\n\r\nRegards,RigardtGovernor Technology",
+      "PostedDate": "2013-06-28T02:37:49.777-07:00",
+      "Id": 105463
+    },
+    {
+      "Message": "Hi governor\r\n\r\nThanks a lot!! That works fine. Hope you can provive a compatible one in the near future.\r\n\r\nThanks for the quick reply!!\r\n\r\nRegards,Boborc",
+      "PostedDate": "2013-06-28T03:39:01.967-07:00",
+      "Id": 105464
+    },
+    {
+      "Message": "Hi all\r\n\r\nWe've releases three new versions - these are compatible with the various releases of Umbraco from 4.7.0 and onwards.\r\n\r\nRegards,RigardtGovernor Technology",
+      "PostedDate": "2013-07-02T08:35:50.617-07:00",
+      "Id": 105465
+    }
+  ]
+}

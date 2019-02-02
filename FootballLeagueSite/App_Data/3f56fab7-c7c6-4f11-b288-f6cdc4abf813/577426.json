@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1340884",
+    "ThreadId": "577426",
+    "Html": "Hi,\r<br />\n<br />\nI cannot get the search to work with the rootNode param set in Umbraco 7.2.1.\r<br />\nTo reproduce install Umbraco 7.2.1 and then install the Full Text Search package from here (I did a local package install). Add a page and add the &quot;homepage&quot; node ID to the rootNode param in the .cshtml containing the macro call. Navigate to the search page and try the search. It returns nothing for me. Remove the node ID and put an empty string instead and the search is working again.\r<br />\n<br />\nI am not sure if this bug is caused by this plugin or by an another Umbraco 7.2.1 Examine issue. Can someone check it out and maybe offer a workaround?\r<br />\n<br />\nThanks,\r<br />\nEyal<br />\n",
+    "PostedDate": "2015-01-11T14:05:48.18-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

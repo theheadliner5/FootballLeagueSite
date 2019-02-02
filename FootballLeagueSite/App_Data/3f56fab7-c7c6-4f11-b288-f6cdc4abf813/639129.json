@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1428614",
+    "ThreadId": "639129",
+    "Html": "Is there a way to programmatically index specific pages.  So, if I have <a href=\"http://www.mysite.com/products/?productid=123\" rel=\"nofollow\">http://www.mysite.com/products/?productid=123</a> or <a href=\"http://www.mysite.com/products/?productid=xyz\" rel=\"nofollow\">http://www.mysite.com/products/?productid=xyz</a>, is there a way to programmatically index both pages, so that I can loop through and index each of these pages that have different content because of a different querystring paramter?\r<br />\nThanks<br />\n",
+    "PostedDate": "2015-06-03T07:35:15.68-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

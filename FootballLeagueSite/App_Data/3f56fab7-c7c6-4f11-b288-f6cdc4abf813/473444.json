@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "1135299",
+    "ThreadId": "473444",
+    "Html": "The company I work at has a site on umbraco and we are trying to set up a job to fully rebuild the index once a week. Almost everything has gone smoothly but when I got to check the webservice it tells me the user does not have access to the server.\r<br />\n<br />\nHere is what the webservices portion of the config file looks like:\r<br />\n<br />\n&lt;webservices enabled=&quot;True&quot;&gt;<br />\n<pre><code>    &lt;!-- You must set user-rights for each service. Enter the usernames seperated with comma (,) --&gt;\n    &lt;documentServiceUsers&gt;searchindex&lt;/documentServiceUsers&gt;\n    &lt;fileServiceUsers&gt;searchindex&lt;/fileServiceUsers&gt;\n    &lt;stylesheetServiceUsers&gt;searchindex&lt;/stylesheetServiceUsers&gt;\n    &lt;memberServiceUsers&gt;searchindex&lt;/memberServiceUsers&gt;\n    &lt;templateServiceUsers&gt;searchindex&lt;/templateServiceUsers&gt;\n    &lt;FullTextServiceUsers&gt;searchindex&lt;/FullTextServiceUsers&gt;\n    &lt;RebuildFullTextIndexUsers&gt;searchindex&lt;/RebuildFullTextIndexUsers&gt;\n    &lt;!-- type of files (extensions) that are allowed for the file service --&gt;\n    &lt;fileServiceFolders&gt;css,xslt&lt;/fileServiceFolders&gt;\n&lt;/webservices&gt;\n</code></pre>\n\nWas hoping I could get some direction as to what I needed to do in order to grant the user access to use that service. Thanks in advance!<br />\n",
+    "PostedDate": "2013-12-12T15:45:01.397-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1135488",
+    "ThreadId": "473444",
+    "Html": "Hi D_Creighton\r<br />\n<br />\nSo it seems like with the recent Umbraco web service security updates, the FullTextSearch web service broke. Normally, in UmbracoSettings.config, you needed to enable web services and add the following entry to your web service configuration above:\r<br />\n<br />\n&lt;maintenanceServiceUsers&gt;searchindex&lt;/maintenanceServiceUsers&gt;\r<br />\n<br />\nHowever, trying this in Umbraco V6, still returned the error you've mentioned above. I assume you're using one of the V6 versions right?\r<br />\n<br />\nI tried updating the web service package with the latest version of umbraco.webservices.dll to be compatible with V6, however ran into some issues. I therefore decided to drop the web service and go for the new Umbraco Web API supported in Umbraco 6.1.0+.\r<br />\n<br />\nPlease find the new Web API package <a href=\"https://fulltextsearch.codeplex.com/releases/view/113429\" rel=\"nofollow\">here</a>.\r<br />\n<br />\nIn terms of authorisation, it seems that unlike the web service method, this will require a bit more work. I'd like keep it protected to avoid unauthorised usage on your site, but would also like to avoid using basic auth. For now, I've implemented UmbracoAuthorizeAttribute, which means the FullTextSearch Web API calls can only be made within the context of a logged in backend user. More info <a href=\"http://our.umbraco.org/documentation/Reference/WebApi/authorization\" rel=\"nofollow\">here</a>. I hope this is suitable for you. Feel free to grab the source code and create your own FullTextSearch Web API controller. This should be fairly easy following <a href=\"http://our.umbraco.org/documentation/Reference/WebApi/\" rel=\"nofollow\">these</a> instructions. All FullTextSearch methods for triggering the underlying index functionality is in Governor.Umbraco.FullTextSearch.Admin. The link also describes how you can authorise the Web API calls against a logged in Umbraco Member instead of a User.\r<br />\n<br />\nThe ideal method for authorisation would be to utilise OAuth or something as built-in functionality but I think this can be added as a feature request.\r<br />\n<br />\nI hope this can point you in the right direction for now.\r<br />\n<br />\nBest,\r<br />\nRigardt<br />\n",
+    "PostedDate": "2013-12-13T06:04:44.543-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1135522",
+    "ThreadId": "473444",
+    "Html": "Hi Rigardt.\r<br />\n<br />\nSorry, I should have mentioned that we actually use an older version of Umbraco, 4.7.2. I'm guessing that web service won't work either?<br />\n",
+    "PostedDate": "2013-12-13T07:18:32.677-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1135528",
+    "ThreadId": "473444",
+    "Html": "Hi D_Creighton\r<br />\n<br />\nIt might depend on which version of umbraco.webservice.dll you're using and if there's a new version for Umbraco 4.7.2. To test this, can you please add the following line to your umbracoSettings.config for the web services section:\r<br />\n<br />\n&lt;maintenanceServiceUsers&gt;searchindex&lt;/maintenanceServiceUsers&gt; \r<br />\n<br />\nThis is the only web service FullTextSearch is using. You don't need to assign your searchindex user to the others.\r<br />\n<br />\nThe web service definitely works with the original umbraco.webservice.dll (with the security vulnerability). If you're using an updated version, it probably won't work anymore but would be worth testing.\r<br />\n<br />\nSimilar to writing your own web api controller, you can write your own Umbraco web service to call the same FullTextSearch methods. Let me know if the above suggestion solves the issue.\r<br />\n<br />\nRegards,\r<br />\nRigardt<br />\n",
+    "PostedDate": "2013-12-13T07:30:15.71-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1135535",
+    "ThreadId": "473444",
+    "Html": "I added that line of code to the umbracoSettings.config and now I don't get any error messages, I just get a blank response. I'm not sure whether that means it's working or not.\r<br />\n<br />\nI checked the log and it errors out saying object reference not set to an instance of an object.System.NullReferenceException: Object reference not set to an instance of an object so something still isn't working right but it may not be the web service.<br />\n",
+    "PostedDate": "2013-12-13T07:44:55.473-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1135542",
+    "ThreadId": "473444",
+    "Html": "The umbraco.webservices.dll version that I have is 1.04869.18017. Is that the correct version of the dll that I need by chance?\r<br />\n<br />\nThanks again for you help with this.\r<br />\n<br />\nD_Creighton<br />\n",
+    "PostedDate": "2013-12-13T07:57:47.407-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1135564",
+    "ThreadId": "473444",
+    "Html": "Hi D_Creighton <br />\n<br />\nThat is the new umbraco.webservices.dll which is not the one the original FullTextWebservice was written for. A solution would not be to start using the old version again since this has been identified to be vulnerable to security risks. Since the Web API functionality isn't part of Umbraco 4.7.2, we either need to fix the web service to be compatible with the new dll or find another way to call the FullTextSearch methods (e.g. re-indexing etc). After the first look, I had some issues with the new dll, hence rewriting it using Web API. Another option might be to use Umbraco /Base to make external calls available to call the required FullTextSearch methods in Governor.Umbraco.FullTextSearch.Admin (which is all that the original web service did).<br />\n<br />\nFor now, I'd suggest having a look at implementing one of these solutions. You basically just need a wrapper for calling the methods in Governor.Umbraco.FullTextSearch.Admin on external HTTP requests. I'll add a request to look at fixing the web service for the new dll but cannot say at this stage exactly how long that will take. You might be able to come up with a solution before I can :)<br />\n<br />\nI hope this helps. Let me know if you have any questions in terms of creating a wrapper for Governor.Umbraco.FullTextSearch.Admin specific to FullTextSearch.<br />\n<br />\nRegards,<br />\nRigardt<br />\n",
+    "PostedDate": "2013-12-13T08:35:02.42-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1135615",
+    "ThreadId": "473444",
+    "Html": "I've never actually made a wrapper at all so anything you could add to help with making one would be greatly appreciated.<br />\n",
+    "PostedDate": "2013-12-13T10:51:01.19-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1136610",
+    "ThreadId": "473444",
+    "Html": "Hi D_Creighton<br />\n<br />\nYou can have a look at the source code (branch 4.7.0 WebService project) for the original FullTextService.asmx.cs. I've included it below. You should be able to reuse the core of this to implement your own Umbraco web service or /Base class. Doing a search online, you should find more info on implementing a web service hosted in Umbraco or a /Base class, either of which can be called externally by your scheduler. The only methods you need from the code below are the AdminActions methods found in Governor.Umbraco.FullTextSearch.Admin to for example re-index the FullTextSearch index etc.<br />\n<br />\nI hope this helps for now.<br />\n<br />\nRegards,<br />\nRigardt<br />\n<br />\nPS: the class below implements umbraco.webservices.BaseWebService which in the current version of the FullTextSearch web service for 4.7.0 still references the old umbraco.webservices.dll. Fixing this issue would involve rebuilding the project against the new version of the dll and dropping Governor.Umbraco.FullTextSearch.WebService.dll in your Umbraco bin. Like I said, feel free to give this a try as you might have it ready before I do :)<br />\n<pre><code>﻿using System;\nusing System.Linq;\nusing System.Web.Services;\nusing System.ComponentModel;\nusing Governor.Umbraco.FullTextSearch.Admin;\n\nnamespace Governor.Umbraco.FullTextSearch.WebService\n{\n    [WebService(Namespace = &quot;http://umbraco.org/webservices/&quot;)]\n    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]\n    [ToolboxItem(false)]\n    // Web service that inheits the basic umbraco web service functionality\n    // See umbraco docs for how to use this\n    public class FullTextService : umbraco.webservices.BaseWebService\n    {\n\n        override public Services Service\n        {\n            get\n            {\n                return Services.MaintenanceService;\n            }\n        }\n        // Standard umbraco web service method\n        [WebMethod]\n        public string GetWebservicesVersion(string username, string password)\n        {\n            // We check if services are enabled and user has access\n            Authenticate(username, password);\n\n            var thisVersion = new Version(0, 9);\n            return Convert.ToString(thisVersion);\n        }\n        /// &lt;summary&gt;\n        /// Rebuild the entire full text index.\n        /// &lt;/summary&gt;\n        /// &lt;param name=&quot;username&quot;&gt;&lt;/param&gt;\n        /// &lt;param name=&quot;password&quot;&gt;&lt;/param&gt;\n        [WebMethod]\n        public void RebuildFullTextIndex(string username, string password)\n        {\n            // We check if services are enabled and user has access\n            Authenticate(username, password);\n            AdminActions.RebuildFullTextIndex();\n        }\n        /// &lt;summary&gt;\n        /// Re-index the supplied list of nodes in the full text index\n        /// &lt;/summary&gt;\n        /// &lt;param name=&quot;username&quot;&gt;&lt;/param&gt;\n        /// &lt;param name=&quot;password&quot;&gt;&lt;/param&gt;\n        /// &lt;param name=&quot;nodes&quot;&gt;&lt;/param&gt;\n        [WebMethod]\n        public void ReindexFullTextNodes(string username, string password, int[] nodes)\n        {\n            // We check if services are enabled and user has access\n            Authenticate(username, password);\n            if (nodes != null &amp;&amp; nodes.Length &gt; 0)\n            {\n                AdminActions.ReindexFullTextNodes(nodes.ToList());\n            }\n        }\n        /// &lt;summary&gt;\n        /// Re-index all nodes in the full text index, but do not delete and rebuld\n        /// the entire index as with RebuildFullTextIndex\n        /// &lt;/summary&gt;\n        /// &lt;param name=&quot;username&quot;&gt;&lt;/param&gt;\n        /// &lt;param name=&quot;password&quot;&gt;&lt;/param&gt;\n        [WebMethod]\n        public void ReindexAllFullTextNodes(string username, string password)\n        {\n            // We check if services are enabled and user has access\n            Authenticate(username, password);\n            AdminActions.ReindexAllFullTextNodes();\n        }\n        /// &lt;summary&gt;\n        /// /// Re-index the supplied list of nodes and all descendants in the full text index\n        /// &lt;/summary&gt;\n        /// &lt;param name=&quot;username&quot;&gt;&lt;/param&gt;\n        /// &lt;param name=&quot;password&quot;&gt;&lt;/param&gt;\n        /// &lt;param name=&quot;nodes&quot;&gt;&lt;/param&gt;\n        [WebMethod]\n        public void ReindexFullTextNodesAndChildren(string username, string password, int[] nodes)\n        {\n            // We check if services are enabled and user has access\n            Authenticate(username, password);\n            if (nodes != null &amp;&amp; nodes.Length &gt; 0)\n            {\n                AdminActions.ReindexFullTextNodesAndChildren(nodes);\n            }\n        }\n    }\n}</code></pre>\n\n",
+    "PostedDate": "2013-12-16T01:47:18.213-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

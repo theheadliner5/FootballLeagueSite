@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1480055",
+    "ThreadId": "656777",
+    "Html": "We installed this fulltext package to our Umbraco 4.7.2 platform.  When we were upgrading the Umbraco version it was determined that this fulltext package was causing the upgrade issues so we restored the environment and were going to remove the package and try the upgrade again....however, we do not see the package listed in the console where all the other packages are and where you remove them from.   Any clues on proper removal of the fulltext package from an Umbraco platform?<br />\n",
+    "PostedDate": "2016-07-28T12:28:06.88-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1484952",
+    "ThreadId": "656777",
+    "Html": "Folks, I am still having this issue and was referred here from Umbraco support.  Can someone please tell me how to remove this fullText packge from Umbraco so I can proceed with an upgrade of Umbraco?  Again, this package installed through the Umbraco installer but does not show up in the list of installed packages to be able to uninstall it, nor does it show up in the package manifest within Umbraco.  How do I safely remove it? <br />\n",
+    "PostedDate": "2016-09-29T07:52:31.21-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

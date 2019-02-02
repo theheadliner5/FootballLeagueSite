@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "945666",
+    "ThreadId": "404229",
+    "Html": "\r\n<p>Hi Guys, I have two questions:</p>\r\n<p>1) In which way I can change the default text with custom for search button, no results messsage, etc...? I see the dictionary table in database but not find the text value.</p>\r\n<p>2) To customize the render of searching page I should set the titleProperties, bodyProperties and others. For &quot;list of properties&quot; you mean the alias of properties or the id? I try to set alias but I don't see any changes.</p>\r\n<p>Thanks and regards,<br>\r\nGiuseppe</p>\r\n",
+    "PostedDate": "2012-11-22T06:22:16.283-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

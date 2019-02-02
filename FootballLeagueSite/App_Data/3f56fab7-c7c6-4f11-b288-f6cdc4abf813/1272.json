@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed by reinstalling package and reconfiguring.",
+    "ClosedDate": "2014-01-10T07:08:09.55-08:00",
+    "CommentCount": 2,
+    "Custom": null,
+    "Description": "Sorry this is a repost but I thought this might belong under \"issues\" more than discussion section.\r\n\r\nI added a true/false property called umbracoSearchHide to my base document type. I verified in FullTextSearch.config file that it has the following:\r\n\r\n    <DisableSearchPropertyNames>\r\n\t\t<add name=\"umbracoSearchHide\" />\r\n    </DisableSearchPropertyNames>\r\n\r\nI set the umbracoSearchHide property to \"true\" on the desired pages and rebuilt the examine index, but the pages still appear in the search results. I'm not sure what I'm missing. I'm running umbraco 6.1.6 and Full Text Search 6.1.2. I had been running an earlier version of full text search before I installed 6.1.2 and tried to implement the umbracoSearchHide field.\r\n\r\nI'd really appreciate any help on this. Thanks!",
+    "LastUpdatedDate": "2014-01-10T07:08:09.55-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "fulltextsearch",
+    "ReportedDate": "2014-01-09T08:00:52.27-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Fixed"
+    },
+    "Summary": "unable to hide pages from search index",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1272
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Nevermind, this seems to have been a configuration problem on my end. I uninstalled and reinstalled the module, and set the httphost and httpurl settings in the fulltextsearch.config file, and everything seems to work now.",
+      "PostedDate": "2014-01-10T06:32:50.863-08:00",
+      "Id": 130066
+    },
+    {
+      "Message": "Hi ecwebmaster\n\nApologies for the delay in responding. The current schedule have not allowed me to properly investigate your issue yet. Thanks for posting your update. Glad to hear it's sorted on your end!\n\nRegards,\nRigardt",
+      "PostedDate": "2014-01-10T07:06:30.507-08:00",
+      "Id": 130067
+    }
+  ]
+}

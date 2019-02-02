@@ -1,0 +1,114 @@
+[
+  {
+    "Id": "1093179",
+    "ThreadId": "457073",
+    "Html": "I would really appreciate it if you could tell me what I am doing wrong.\r<br />\n<br />\nI've included sections of the config files below. \r<br />\n<br />\nThank you.\r<br />\n<br />\n  &lt;IndexSet SetName=&quot;FullTextIndexSet&quot; IndexPath=&quot;~/App_Data/TEMP/ExamineIndexes/FullText/&quot;&gt;<br />\n<pre><code>&lt;IndexAttributeFields&gt;\n  &lt;add Name=&quot;id&quot; /&gt;\n  &lt;add Name=&quot;nodeName&quot; /&gt;\n  &lt;add Name=&quot;nodeTypeAlias&quot; /&gt;\n&lt;/IndexAttributeFields&gt;\n&lt;IndexUserFields&gt;\n  &lt;add Name=&quot;body&quot; /&gt;\n  &lt;add Name=&quot;summary&quot; /&gt;\n&lt;/IndexUserFields&gt;\n&lt;IncludeNodeTypes /&gt;\n&lt;ExcludeNodeTypes /&gt;</code></pre>\n\n&lt;/IndexSet&gt;\r<br />\n<br />\n<br />\n<br />\n<br />\n<br />\n<br />\n&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;\r<br />\n&lt;FullTextSearch&gt;<br />\n<pre><code>&lt;!-- Enable Full Text Indexing/Search --&gt;\n&lt;Enabled&gt;false&lt;/Enabled&gt;\n&lt;!-- Indexing Options--&gt;\n&lt;!-- \n    This setting controls when pages are actually rendered to HTML and stored/indexed\n\n    This defaults to false. Rendering will be performed at indexing time. \n\n    Set this to true to render nodes to HTML on umbraco publishing events and store in a \n    database cache for indexing, rather than attempt to read the nodes at indexing \n    time(which can be less reliable).\n    The advantage of rendering at indexing time is that publishing will be quicker, \n    and you won't have to republish the entire site before the index is created \n    properly.\n    Possible values:\n        true - Render HTML at publishing time\n            Note: Indexing must be set to run async in ExamineSettings.config if you set this to true\n\n        false - Render HTML at indexing time (default)\n\n    Note that if you're overriding renderers from your own code \n    this affects whether or not your renderer can use the umbraco NodeFactory API\n--&gt;\n&lt;PublishEventRendering&gt;true&lt;/PublishEventRendering&gt;\n\n&lt;!--\n    This controls which renderer is used to render nodes to HTML\n        Program - Renders nodes using a modified version of umbraco's \n                  RenderTemplate functionality. \n                  Only works if PublishEventRendering is set to true\n        HTTP - Render nodes using HttpWebRequests (default)\n--&gt;\n&lt;DefaultRenderer&gt;Program&lt;/DefaultRenderer&gt;\n&lt;!-- \n    Needed for HTTP Rendering, determines \n    URL of the default.aspx page on your host. I recommend you use\n    127.0.0.1 and set the host header below to your domain to avoid \n    problems with name resolution, firewalls, etc. \n--&gt;\n&lt;HttpUrl&gt;http://********local/default.aspx&lt;/HttpUrl&gt;\n&lt;!-- Domain name of your site e.g. www.yoursite.com --&gt;\n&lt;HttpHost&gt;&lt;/HttpHost&gt;\n&lt;!-- Indexing request timout in seconds --&gt;\n&lt;HttpTimeout&gt;120&lt;/HttpTimeout&gt;\n&lt;!-- The name of the Search Provider set up in ExamineSettings.config--&gt;\n&lt;SearchProvider&gt;FullTextSearcher&lt;/SearchProvider&gt;\n&lt;!-- The name of the Index Provider set up in ExamineSettings.config--&gt;\n&lt;IndexProvider&gt;FullTextIndexer&lt;/IndexProvider&gt;\n&lt;!--\n    Full text indexing will be disabled for these node types.\n    Note that full text indexing is not run for nodes without\n    a template anyway. \n    To disable all indexing for a given node type use ExcludeNodeTypes\n    in ExamineIndex.config\n--&gt;\n&lt;NoFullTextNodeTypes&gt;\n    &lt;add name=&quot;searchPage&quot; /&gt;\n&lt;/NoFullTextNodeTypes&gt;\n\n&lt;!-- \n    Setting any of the properties under here to true for a given\n    Node will disable All indexing on that page.\n--&gt;\n&lt;DisableSearchPropertyNames&gt;\n    &lt;add name=&quot;umbracoSearchHide&quot; /&gt;\n&lt;/DisableSearchPropertyNames&gt;\n&lt;!--\n    This string is passed to every page index&lt;hed \n    by the indexer in the query string, or as a cookie\n    depending on the rendering method selected.\n    e.g. http://yoursite.com/page.aspx?FullTextActive=1\n    The intention of this is for you to use the supplied\n    XSLT helper function fulltextsearch.search:IsIndexingActive\n    which returns true if this parameter is specified in \n    the query string or by cookie.\n--&gt;\n&lt;SearchActiveStringName&gt;FullTextActive&lt;/SearchActiveStringName&gt;\n\n&lt;!-- Cutomise HTML Tag Stripper here --&gt;\n&lt;TagsToRemove&gt;\n    &lt;add name=&quot;script&quot; /&gt;\n    &lt;add name=&quot;head&quot; /&gt;\n&lt;/TagsToRemove&gt;\n&lt;IdsToRemove&gt;\n    &lt;add name=&quot;mainNavigation&quot; /&gt;\n&lt;/IdsToRemove&gt;\n\n&lt;!-- Override default IIS timeout on publishing requests, value in seconds --&gt;\n&lt;ScriptTimeout&gt;1200&lt;/ScriptTimeout&gt;\n\n\n&lt;!-- Name of the full text index in lucene, don't change unless you need to --&gt;\n&lt;LuceneFTField&gt;FullTextSearch&lt;/LuceneFTField&gt;\n\n&lt;!-- \n    The query generated for Lucene boosts the relevance of the title properties, \n    if specified. This controls by how much.\n--&gt;\n&lt;SearchTitleBoost&gt;10.0&lt;/SearchTitleBoost&gt;\n&lt;!--\n    By default the Search XSLT Helper returns all fields from the\n    index for users to modify. Set to false to return only summary fields. \n--&gt;\n&lt;ReturnAllFieldsInXSLT&gt;true&lt;/ReturnAllFieldsInXSLT&gt;</code></pre>\n\n&lt;/FullTextSearch&gt;<br />\n",
+    "PostedDate": "2013-09-16T09:06:56.597-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1093208",
+    "ThreadId": "457073",
+    "Html": "Hi Ast35\r<br />\n<br />\nBy default, you shouldn't really need to specify your document type properties in the IndexSet. (e.g. body and summary). To troubleshoot this, I'd recommend removing these two values for now.\r<br />\n<br />\nI've noticed that the &lt;Enabled&gt; element is set to false in your FullTextSearch.config. Can you please ensure this is set to true. Once you've set it to true, FullTextSearch should automatically start to index your nodes as each of them are published. You can also manually re-index the entire site by using the FullTextSearch tab in the Developer section.\r<br />\n<br />\nLastly, I assume your templates do actually have the content available for your body and summary properties. FullTextSearch indexes what is actually rendered on the frontend, so the markup for your content should be included in your page source.\r<br />\n<br />\nIf this doesn't work, I'd suggest reverting to the default values for the following FullTextSearch.config values to further troubleshoot: set &lt;PublishEventRenderings&gt; to false and set &lt;DefaultRenderer&gt; to HTTP. Once updated, please ensure to re-index the site by using the Developer section again.\r<br />\n<br />\nI hope this helps.\r<br />\n<br />\nBest regards,\r<br />\nRigardt<br />\n",
+    "PostedDate": "2013-09-16T10:05:29.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1093420",
+    "ThreadId": "457073",
+    "Html": "Hi Rigardt,<br />\n<br />\nthank you for replying. Most of the changes I had made from the default values were a result of me trying different things yesterday. Not sure how 'enabled' got back to 'false' - that might have been a result of pressing CTRL-Z for too long at some point!<br />\n<br />\nI have pasted in the current state of the file after undoing some things (and pointing the Default Website in IIS at the appropriate directory so that I could use the IP address). And deleted the index files and re-indexed.<br />\n<br />\nThe field values I am searching for are visible in a web browser, but still the only search values that work are the document name.<br />\n<br />\nI'm currently working on this site locally. Do you think it would make a difference when the site is uploaded onto the web server?<br />\n<br />\nThanks,<br />\nAst35<br />\n<br />\n<br />\n&lt;?xml version=&quot;1.0&quot;?&gt;<br />\n&lt;!-- \nUmbraco examine is an extensible indexer and search engine.\nThis configuration file can be extended to create your own index sets.\nIndex/Search providers can be defined in the UmbracoSettings.config\n\nMore information and documentation can be found on CodePlex: http://umbracoexamine.codeplex.com\n--&gt;\n&lt;ExamineLuceneIndexSets&gt;<br />\n&lt;!-- The internal index set used by Umbraco back-office - DO NOT REMOVE --&gt;\n&lt;IndexSet SetName=&quot;InternalIndexSet&quot; IndexPath=&quot;~/App_Data/TEMP/ExamineIndexes/Internal/&quot; /&gt;<br />\n&lt;!-- The internal index set used by Umbraco back-office for indexing members - DO NOT REMOVE --&gt;\n&lt;IndexSet SetName=&quot;InternalMemberIndexSet&quot; IndexPath=&quot;~/App_Data/TEMP/ExamineIndexes/InternalMember/&quot;&gt;<br />\n<pre><code>&lt;IndexAttributeFields&gt;\n  &lt;add Name=&quot;id&quot; /&gt;\n  &lt;add Name=&quot;nodeName&quot; /&gt;\n  &lt;add Name=&quot;updateDate&quot; /&gt;\n  &lt;add Name=&quot;writerName&quot; /&gt;\n  &lt;add Name=&quot;loginName&quot; /&gt;\n  &lt;add Name=&quot;email&quot; /&gt;\n  &lt;add Name=&quot;nodeTypeAlias&quot; /&gt;\n&lt;/IndexAttributeFields&gt;</code></pre>\n\n&lt;/IndexSet&gt;<br />\n&lt;!-- Default Indexset for external searches, this indexes all fields on all types of nodes--&gt;\n&lt;IndexSet SetName=&quot;ExternalIndexSet&quot; IndexPath=&quot;~/App_Data/TEMP/ExamineIndexes/External/&quot; /&gt;<br />\n  &lt;IndexSet SetName=&quot;FullTextIndexSet&quot; IndexPath=&quot;~/App_Data/TEMP/ExamineIndexes/FullText/&quot;&gt;<br />\n<pre><code>&lt;IndexAttributeFields&gt;\n  &lt;add Name=&quot;id&quot; /&gt;\n  &lt;add Name=&quot;nodeName&quot; /&gt;\n  &lt;add Name=&quot;nodeTypeAlias&quot; /&gt;\n&lt;/IndexAttributeFields&gt;\n&lt;IndexUserFields&gt;\n&lt;/IndexUserFields&gt;\n&lt;IncludeNodeTypes /&gt;\n&lt;ExcludeNodeTypes /&gt;</code></pre>\n\n&lt;/IndexSet&gt;<br />\n&lt;/ExamineLuceneIndexSets&gt;<br />\n<br />\n<br />\n<br />\n<br />\n&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />\n&lt;FullTextSearch&gt;<br />\n<pre><code>&lt;!-- Enable Full Text Indexing/Search --&gt;\n&lt;Enabled&gt;true&lt;/Enabled&gt;\n&lt;!-- Indexing Options--&gt;\n&lt;!-- \n    This setting controls when pages are actually rendered to HTML and stored/indexed\n\n    This defaults to false. Rendering will be performed at indexing time. \n\n    Set this to true to render nodes to HTML on umbraco publishing events and store in a \n    database cache for indexing, rather than attempt to read the nodes at indexing \n    time(which can be less reliable).\n    The advantage of rendering at indexing time is that publishing will be quicker, \n    and you won't have to republish the entire site before the index is created \n    properly.\n    Possible values:\n        true - Render HTML at publishing time\n            Note: Indexing must be set to run async in ExamineSettings.config if you set this to true\n\n        false - Render HTML at indexing time (default)\n\n    Note that if you're overriding renderers from your own code \n    this affects whether or not your renderer can use the umbraco NodeFactory API\n--&gt;\n&lt;PublishEventRendering&gt;false&lt;/PublishEventRendering&gt;\n\n&lt;!--\n    This controls which renderer is used to render nodes to HTML\n        Program - Renders nodes using a modified version of umbraco's \n                  RenderTemplate functionality. \n                  Only works if PublishEventRendering is set to true\n        HTTP - Render nodes using HttpWebRequests (default)\n--&gt;\n&lt;DefaultRenderer&gt;HTTP&lt;/DefaultRenderer&gt;\n&lt;!-- \n    Needed for HTTP Rendering, determines \n    URL of the default.aspx page on your host. I recommend you use\n    127.0.0.1 and set the host header below to your domain to avoid \n    problems with name resolution, firewalls, etc. \n--&gt;\n&lt;HttpUrl&gt;http://127.0.0.1/default.aspx&lt;/HttpUrl&gt;\n&lt;!-- Domain name of your site e.g. www.yoursite.com --&gt;\n&lt;HttpHost&gt;&lt;/HttpHost&gt;\n&lt;!-- Indexing request timout in seconds --&gt;\n&lt;HttpTimeout&gt;120&lt;/HttpTimeout&gt;\n&lt;!-- The name of the Search Provider set up in ExamineSettings.config--&gt;\n&lt;SearchProvider&gt;FullTextSearcher&lt;/SearchProvider&gt;\n&lt;!-- The name of the Index Provider set up in ExamineSettings.config--&gt;\n&lt;IndexProvider&gt;FullTextIndexer&lt;/IndexProvider&gt;\n&lt;!--\n    Full text indexing will be disabled for these node types.\n    Note that full text indexing is not run for nodes without\n    a template anyway. \n    To disable all indexing for a given node type use ExcludeNodeTypes\n    in ExamineIndex.config\n--&gt;\n&lt;NoFullTextNodeTypes&gt;\n    &lt;add name=&quot;searchPage&quot; /&gt;\n&lt;/NoFullTextNodeTypes&gt;\n\n&lt;!-- \n    Setting any of the properties under here to true for a given\n    Node will disable All indexing on that page.\n--&gt;\n&lt;DisableSearchPropertyNames&gt;\n    &lt;add name=&quot;umbracoSearchHide&quot; /&gt;\n&lt;/DisableSearchPropertyNames&gt;\n&lt;!--\n    This string is passed to every page index&lt;hed \n    by the indexer in the query string, or as a cookie\n    depending on the rendering method selected.\n    e.g. http://yoursite.com/page.aspx?FullTextActive=1\n    The intention of this is for you to use the supplied\n    XSLT helper function fulltextsearch.search:IsIndexingActive\n    which returns true if this parameter is specified in \n    the query string or by cookie.\n--&gt;\n&lt;SearchActiveStringName&gt;FullTextActive&lt;/SearchActiveStringName&gt;\n\n&lt;!-- Cutomise HTML Tag Stripper here --&gt;\n&lt;TagsToRemove&gt;\n    &lt;add name=&quot;script&quot; /&gt;\n    &lt;add name=&quot;head&quot; /&gt;\n&lt;/TagsToRemove&gt;\n&lt;IdsToRemove&gt;\n    &lt;add name=&quot;mainNavigation&quot; /&gt;\n&lt;/IdsToRemove&gt;\n\n&lt;!-- Override default IIS timeout on publishing requests, value in seconds --&gt;\n&lt;ScriptTimeout&gt;1200&lt;/ScriptTimeout&gt;\n\n\n&lt;!-- Name of the full text index in lucene, don't change unless you need to --&gt;\n&lt;LuceneFTField&gt;FullTextSearch&lt;/LuceneFTField&gt;\n\n&lt;!-- \n    The query generated for Lucene boosts the relevance of the title properties, \n    if specified. This controls by how much.\n--&gt;\n&lt;SearchTitleBoost&gt;10.0&lt;/SearchTitleBoost&gt;\n&lt;!--\n    By default the Search XSLT Helper returns all fields from the\n    index for users to modify. Set to false to return only summary fields. \n--&gt;\n&lt;ReturnAllFieldsInXSLT&gt;true&lt;/ReturnAllFieldsInXSLT&gt;</code></pre>\n\n&lt;/FullTextSearch&gt;<br />\n",
+    "PostedDate": "2013-09-17T01:36:11.617-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1093424",
+    "ThreadId": "457073",
+    "Html": "Hi Ast35\r<br />\n<br />\nThanks for the feedback. Can I also ask that you have a look in the umbracoLog table and in the App_Data/Logs folder for any errors logged perhaps?\r<br />\n<br />\nRegards,\r<br />\nRigardt<br />\n",
+    "PostedDate": "2013-09-17T01:59:46.02-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1093441",
+    "ThreadId": "457073",
+    "Html": "I found\r<br />\n<br />\n2013-09-17 10:15:08,306 [8] ERROR UmbracoExamine.DataServices.UmbracoLogService - [Thread 274] Provider=FullTextIndexer, NodeId=-1\r<br />\nSystem.Exception: Error indexing queue items,Could not load file or assembly 'HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040), IndexSet: FullTextIndexSet\r<br />\n<br />\nI worked out one problem from the error ... I am using Umbraco v6.1.1 and I had downloaded the latest version of the package.\r<br />\n<br />\nI uninstalled the package, and installed Full_Text_Search_6.0.1 instead. Unfortunately, I am now getting :\r<br />\n<br />\n2013-09-17 10:56:30,187 [5] ERROR UmbracoExamine.DataServices.UmbracoLogService - [Thread 8] Provider=FullTextIndexer, NodeId=-1\r<br />\nSystem.Exception: Error indexing queue items,Object reference not set to an instance of an object., IndexSet: FullTextIndexSet<br />\n",
+    "PostedDate": "2013-09-17T03:07:19.76-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1093446",
+    "ThreadId": "457073",
+    "Html": "Hi Ast35\r<br />\n<br />\nGlad to hear the initial issue is solved.\r<br />\n<br />\nSince you've uninstalled and reinstalled, can you please confirm that you've still got all the correct components in your two Examine config files. It might also be worth completely removing the old FullTextSearch index.\r<br />\n<br />\nIt would be useful to know where the null reference exception is occurring. When does the error occur at the moment? Can you please have a look at your Windows event log if it includes any further info on the exact method call where this is happening?\r<br />\n<br />\nThanks,\r<br />\nRigardt<br />\n",
+    "PostedDate": "2013-09-17T03:18:54.407-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1093503",
+    "ThreadId": "457073",
+    "Html": "Hi Rigardt,\r<br />\n<br />\nI have now restored the website files and database to before I installed it yesterday (to make sure there was nothing left over from the newer package), and re-installed the 6.0.1 package but it is still giving the same error.\r<br />\n<br />\nI'm afraid I'm not sure exactly where to look in the Event log. I have opened the Event Viewer and looked down the tree, but I can't see anything that looks relevant.\r<br />\n<br />\nSorry to keep bothering you with this.<br />\n",
+    "PostedDate": "2013-09-17T05:32:37.27-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1093611",
+    "ThreadId": "457073",
+    "Html": "Hi Ast35\r<br />\n<br />\nI was wondering if anything might show up in the Event Viewer &gt; Windows Logs &gt; Application. If you can trigger the error again and refresh this log, then hopefully it would contain some more info which might be helpful? Also, have you had another look at the umbracoLogs table for this second error for any more info?\r<br />\n<br />\nMany thanks,\r<br />\nRigardt <br />\n",
+    "PostedDate": "2013-09-17T09:11:07.987-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1094364",
+    "ThreadId": "457073",
+    "Html": "Hi Ast35\r<br />\n<br />\nCan I please ask you to try the following: ensure to remove the FullTextSearch index. Then ensure to configure the FullTextSearch.config before you use the index buttons on the Developer FullTextSearch tab. i.e. set the &lt;Enabled&gt; and &lt;HttpUrl&gt; / &lt;HttpHost&gt; before you index for the first time. \r<br />\n<br />\nAnother user reported the same issue as you're experiencing and it seems this method started to create the index as expected. It might be a quick fix but at least if it works it will get you going for now.\r<br />\n<br />\nBest regards,\r<br />\nRigardt<br />\n",
+    "PostedDate": "2013-09-19T01:25:59.273-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1102760",
+    "ThreadId": "457073",
+    "Html": "Hi,\r<br />\n<br />\nIm having the same issue i and i cant figure out what i am doing wrong, i tried the fix in the other issue, uninstall delete all folders with index and the table. And reinstall setup and then index, still wont work for me and return ERROR node:-1.\r<br />\n<br />\nI have gotten it to work on my local machine, but when i do the same on our production server it refuse to index.\r<br />\n<br />\nDo i need to setup something extra on my production server, i cant figure out what i am missing?\r<br />\n<br />\nHopefully there is a solution for this :)<br />\n",
+    "PostedDate": "2013-10-02T07:31:36.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1104406",
+    "ThreadId": "457073",
+    "Html": "Hi Erikmmm\r<br />\n<br />\nTo troubleshoot this, can you please confirm that the FullTextSearch.config has already been configured before your first full text indexing on production? i.e. have you already set &lt;Enabled&gt;, &lt;HttpUrl&gt;/&lt;HttpHost&gt; before re-indexing from the FullTextSearch Developer tab?\r<br />\n<br />\nCan you also please let me know which Umbraco version you're using and which version of FullTextSearch you have installed?\r<br />\n<br />\nUnfortunately I still cannot manage to reproduce this, so any help on this would be appreciated. Hopefully we can provide a fix for this issue soon!\r<br />\n<br />\nMany thanks,\r<br />\nRigardt<br />\n",
+    "PostedDate": "2013-10-07T01:40:21.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1104989",
+    "ThreadId": "457073",
+    "Html": "Yes i have tried the fix mentioned some where else on the site where you uninstall, delete the table from the database and delete the index folder reenter all my information and set enabled to true after everything is setup.\r<br />\n<br />\nIm am using: Umbraco v6.1.4 (Assembly version: 1.0.4982.22139)\r<br />\nAnd fulltextsearch version: 6.1.0\r<br />\n<br />\nMy production server is running:\r<br />\nWindows Server 2008 R2 standard\r<br />\nService pack 1\r<br />\nIIs version 7.5\r<br />\nUmbraco is running off MS sql server 2008\r<br />\n<br />\nIf you need futher information ill send you what ever i can.<br />\n",
+    "PostedDate": "2013-10-08T05:59:31.737-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1107121",
+    "ThreadId": "457073",
+    "Html": "Hi Erikmmm\r<br />\n<br />\nI've finally managed to reproduce the issue. It turns out that this error occurred when trying to index a node that had no template selected. I assume you might have this on you production environment but not on your local?\r<br />\n<br />\nI've uploaded a new version (v6.1.2 for Umbraco 6.1.4) which should solve this issue. Apologies for the delay in locating the actual cause of this issue.\r<br />\n<br />\nPlease let me know if this solves the issue for you or if you might still be experiencing any issues.\r<br />\n<br />\nRegards,\r<br />\nRigardt<br />\n",
+    "PostedDate": "2013-10-14T05:06:00.557-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2013-10-14T05:06:47.607-07:00"
+  },
+  {
+    "Id": "1109152",
+    "ThreadId": "457073",
+    "Html": "Hi Rigardt,\r<br />\n<br />\nLooks like that did the trick thanks you very much for the support\r<br />\n<br />\nRegards,\r<br />\nErik<br />\n",
+    "PostedDate": "2013-10-18T04:39:50.06-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

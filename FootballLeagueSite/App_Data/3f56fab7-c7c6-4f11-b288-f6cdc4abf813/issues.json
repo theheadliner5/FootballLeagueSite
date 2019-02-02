@@ -1,0 +1,50 @@
+[
+  {
+    "Id": 535,
+    "Title": "Incorrect search results with thread cultures with comma as decymal symbol"
+  },
+  {
+    "Id": 696,
+    "Title": "Searching authenticated pages"
+  },
+  {
+    "Id": 1270,
+    "Title": "Lucene.Net.dll version mismatch"
+  },
+  {
+    "Id": 1271,
+    "Title": "Incompatible with 6.1.3+ - HtmlAgility pack change"
+  },
+  {
+    "Id": 1272,
+    "Title": "unable to hide pages from search index"
+  },
+  {
+    "Id": 1273,
+    "Title": "Parsing numbers of type double"
+  },
+  {
+    "Id": 1274,
+    "Title": "Wildcard breaks the razor script"
+  },
+  {
+    "Id": 1275,
+    "Title": "Setting pageLength to 0 for  SearchExtension.Search gives an exception"
+  },
+  {
+    "Id": 1276,
+    "Title": "Incompatible with Azure SQL"
+  },
+  {
+    "Id": 1277,
+    "Title": "Umbraco Full Text Search doesn't support chinese Searchwords"
+  },
+  {
+    "Id": 1278,
+    "Title": "AdminActions.ReindexAllFullTextNodes fails in Umbraco 7.5.4"
+  },
+  {
+    "Id": 1279,
+    "Title": "Umbraco Full Text Search Error rendering node using Http Renderer"
+  }
+]

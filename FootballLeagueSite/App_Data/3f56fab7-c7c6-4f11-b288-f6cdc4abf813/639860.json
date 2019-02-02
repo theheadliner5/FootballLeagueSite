@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1430141",
+    "ThreadId": "639860",
+    "Html": "Hi,\r<br />\n<br />\nCan I somehow setup search to look in meta title og meta description?\r<br />\nAnd if how?\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2015-06-11T10:25:15.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1435115",
+    "ThreadId": "639860",
+    "Html": "Hi,\r<br />\n<br />\nIf you go to your /Config/ folder and open <strong>ExamineIndex.config</strong>, you can specify the configuration for your various <strong>IndexSets</strong>.  Find the one called <strong>FullTextIndexSet</strong> and you can add/modify a section there called <strong>IndexUserFields</strong>.\r<br />\n<br />\nSee the example below:<br />\n<pre><code>&lt;IndexSet SetName=&quot;FullTextIndexSet&quot; IndexPath=&quot;~/App_Data/TEMP/ExamineIndexes/FullText/&quot;&gt;\n    &lt;IndexAttributeFields&gt;\n      &lt;add Name=&quot;id&quot; /&gt;\n      &lt;add Name=&quot;nodeName&quot; /&gt;\n      &lt;add Name=&quot;nodeTypeAlias&quot; /&gt;\n    &lt;/IndexAttributeFields&gt;\n    &lt;IndexUserFields&gt;\n        &lt;add Name=&quot;myMetaTitleAlias&quot; /&gt;\n        &lt;add Name=&quot;myMetaDescriptionAlias&quot; /&gt;\n    &lt;/IndexUserFields&gt;\n    &lt;IncludeNodeTypes /&gt;\n    &lt;ExcludeNodeTypes /&gt;\n&lt;/IndexSet&gt;</code></pre>\n\nThere's a very good article about how to configure Examine on the Umbraco site: <a href=\"http://www.example.com\" rel=\"nofollow\">http://umbraco.com/follow-us/blog-archive/2011/9/16/examining-examine</a><br />\n",
+    "PostedDate": "2015-07-20T08:10:47.27-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2015-07-20T18:45:02.137-07:00"
+  },
+  {
+    "Id": "1435220",
+    "ThreadId": "639860",
+    "Html": "Cool, thanks a lot (y)<br />\n",
+    "PostedDate": "2015-07-20T18:44:57.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

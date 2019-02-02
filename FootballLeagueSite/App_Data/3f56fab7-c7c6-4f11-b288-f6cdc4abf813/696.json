@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "",
+    "LastUpdatedDate": "2016-01-15T01:47:31.603-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "fulltextsearch",
+    "ReportedDate": "2012-06-01T11:11:43.867-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Searching authenticated pages",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 2,
+    "Id": 696
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Hi Krishna\r\n\r\nApologies for the delay in our response. Hopefully our feedback can still be useful.\r\n\r\nFull Text Search finds content by evaluating the rendered html in the frontend. For this reason, supporting indexing of protected pages is quite tricky to implement. This is mainly due to the number of different authentication mechanisms that sites can use and simulating authenticating some user. Honouring user roles and indexing content only available for specific roles can complicate things further.\r\n\r\nAs mentioned in the documentation, this is not currently supported, however this has been added as a future request. \r\n\r\nRegards,RigardtGovernor Technology",
+      "PostedDate": "2013-07-02T08:50:53.037-07:00",
+      "Id": 105456
+    }
+  ]
+}

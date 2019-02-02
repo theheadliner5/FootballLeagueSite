@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "831003",
+    "ThreadId": "354213",
+    "Html": "<p>I've been trying to get this module working for some time now - but nomatter what I do it wont index my site.</p>\n<p>The TEMP/ExamineIndexes/FullText is created, but nothing is created in the DB</p>\n<p>Also, when running a a search, I get an error on line 300 in FullTextSearch.XSLT</p>\n<p>&lt;xsl:variable name=\"results\" select=\"fulltextsearch.search:Search($queryType,$searchTerms,$titleProperties,$bodyProperties,$rootNodes,$titleLinkProperties,$summaryProperties,$contextHighlighting,$summaryLength,$pageNumber,$pageLength,$fuzzyness,$useWildcards)\"&nbsp;  /&gt;</p>\n<p>with the text:&nbsp;</p>\n<p>\"An error occurred during a call to extension function 'Search'. See InnerException for a complete description of the error.\"</p>\n<p>Can anyone point me in the right direction - what I might be doing wrong, or how to fix it?</p>\n<p>Using Umbraco 4.7</p>\n<pre>  </pre>",
+    "PostedDate": "2012-05-02T02:22:11.24-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "832079",
+    "ThreadId": "354213",
+    "Html": "<p>So, I got it working. <br /><br />It was Visual Studio acting up, had to check .exa and .lck out for edit.</p>\r\n<p>&nbsp;</p>\r\n<p>/TEMP/ExamineIndexes/Fullsearch/server.exa &amp; .lck</p>\r\n<p>&nbsp;</p>\r\n<p>Worked like a charm after that :)</p>",
+    "PostedDate": "2012-05-04T02:12:38.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

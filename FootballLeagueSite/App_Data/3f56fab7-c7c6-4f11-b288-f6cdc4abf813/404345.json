@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "946076",
+    "ThreadId": "404345",
+    "Html": "\r\n<p>Is there any way to create a second indexer to include both published and unpublished nodes and call the second one on a different search page?&nbsp;</p>\r\n<p>I found on the xslt this:<br>\r\n&nbsp;<span>&lt;</span><span>xsl:variable&nbsp;</span><span>name</span><span>=</span><span>&quot;fullTextIndexName&quot;</span><span>&gt;</span><span>FullTextSearch</span><span>&lt;/</span><span>xsl:variable</span><span>&gt;</span></p>\r\n<p><span>If so how can i set this up?</span></p>\r\n<p>Thank you in advance,<br>\r\nSpyros.&nbsp;</p>\r\n",
+    "PostedDate": "2012-11-23T03:41:34.437-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

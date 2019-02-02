@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "730519",
+    "ThreadId": "287363",
+    "Html": "<p>Hi all,<br /> Ive installed full text search and its working great. However I'm just wondering if anyone can help with these little problems?<br /> 1. How do I change the search to look at certain fields (i.e. title and category) that are specified in the document type?<br /> 2. How do i get it to look for words such as \"iPhone\" when I type in \"Phone\" or \"whatsapp\" when I type in \"app\"<br /> Thanks</p>",
+    "PostedDate": "2012-01-25T07:27:47.77-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

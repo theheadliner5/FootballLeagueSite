@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "652805",
+    "ThreadId": "267837",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>I am trying to activate wilcards so a search query like &quot;pro**&quot; will match both &quot;property&quot; and &quot;professional&quot;, but it seems that changing the&nbsp;useWildcards parameter in the XSLT macro doesn&acute;t have any effect. It still requires an keyword wih exact\r\n macth.</p>\r\n<p>Default setting is&nbsp;useWildcards=&quot;0&quot;. What do I need to change it to? I have tried both&nbsp;useWildcards=&quot;1&quot; and&nbsp;useWildcards=&quot;*&quot;without any luck:</p>\r\n<p>&nbsp; &nbsp; &lt;umbraco:Macro queryType=&quot;MultiRelevance&quot; titleProperties=&quot;&quot; bodyProperties=&quot;&quot; titleLinkProperties=&quot;&quot; summaryProperties=&quot;&quot; rootNodes=&quot;&quot; contextHighlighting=&quot;1&quot; summaryLength=&quot;100&quot; pageLength=&quot;1000&quot; fuzzyness=&quot;&quot; useWildcards=&quot;0&quot; Alias=&quot;FullTextSearch&quot;\r\n runat=&quot;server&quot;&gt;&lt;/umbraco:Macro&gt;</p>\r\n<p>&nbsp;</p>\r\n<p>Best regards,</p>\r\n<p>Martin</p>\r\n",
+    "PostedDate": "2011-08-04T20:20:10.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "652935",
+    "ThreadId": "267837",
+    "Html": "<p>Hi Martin,</p>\r\n<p>The useWildcards setting actually appends a wildcard to the end of a query automatically. So typing pro should automatcically match property and professional. I probably should have made that clearer in the documentation.</p>\r\n<p>If you acually type the wildcard it just gets escaped by the query parser. I can look into adding support for user typed wildcards in a future version.</p>\r\n<p>Cheers,</p>\r\n<p>Bjorn</p>",
+    "PostedDate": "2011-08-05T02:58:32.393-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "653413",
+    "ThreadId": "267837",
+    "Html": "<p>Hi Bjorn,</p>\r\n<p>Thanks for the quick reply - you pointed me in the right direction (setting useWildcards=\"1\").</p>\r\n<p>I <em>did </em>try it yesterday, actually, but I thought it was wrong since the search result went a bit crazy at the same time I&nbsp;set useWildcards=\"1\". It seems that on my site as soon as&nbsp;useWildcards is set to \"1\" then a lot of wrong hits appear under the right hits when I search. One thing goes again in all the wrong hits: They link to pages that contain the character \"5\" (the number five). Not every search query gives these wrong hits. It seems that \"5\" must appear in the right hit pages too and then the long list of wrong pages (pages not containing my query word) appear also.</p>\r\n<p>I know it sounds weird, but can it be that there is a bug in the package that gives the character \"5\" a special role?</p>\r\n<p>&nbsp;</p>\r\n<p>BTW: Thanks for the great package - it has made it possible for me to actually set up Examine! :)</p>\r\n<p>&nbsp;</p>\r\n<p>Cheers.</p>\r\n<p>Martin</p>",
+    "PostedDate": "2011-08-05T13:46:27.683-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "653537",
+    "ThreadId": "267837",
+    "Html": "<p>I will try to explain in another way (the above was a bit confusing....):</p>\r\n<p>&nbsp;</p>\r\n<p>When ever a search term results in one or more pages containing the character \"5\" in the&nbsp;&lt;data alias=\"FullTextSearch\"&gt; of the result pages then a lot of extra hits appear on the hits pages: All of the extra pages is characterized by also containing \"5\"&nbsp;in the&nbsp;&lt;data alias=\"FullTextSearch\"&gt; node.</p>\r\n<p>The same happens, BTW, when I enter a search query that has no matches (i.e. \"xxxxxxxxxxxxxxxxxxxxxxxxxxxx\" ): Then a lot of wrong hits appear, all of them&nbsp;&nbsp;containing the character \"5\" in the&nbsp;&lt;data alias=\"FullTextSearch\"&gt;.</p>\r\n<p>&nbsp;</p>\r\n<p>Hope this makes more sense.... :)</p>\r\n<p>&nbsp;</p>\r\n<p>Regards,</p>\r\n<p>Martin</p>",
+    "PostedDate": "2011-08-05T21:42:04.363-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "653542",
+    "ThreadId": "267837",
+    "Html": "<p>Forgot one last info: \"5\" is highlighted in the wrong search result even though \"5\" isn&acute;t part of the search query.</p>",
+    "PostedDate": "2011-08-05T22:21:44.707-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "654386",
+    "ThreadId": "267837",
+    "Html": "<p>That certainly sounds like a bug... It's an odd one though. It seems like a 5 is somehow working itself into your lucene queries. I can't picture what would trigger that behaviour though.</p>\r\n<p>I've tried this on my installation and I can't replicate it.</p>\r\n<p>A few thoughts/questions</p>\r\n<p>1) Have you modified the XSLT in any way, is it possible you could have introduced a bug there?</p>\r\n<p>2) Are you using a non-standard language/character set?</p>\r\n<p>3) Can you give me any more details. A copy of the macro from your template? Your fulltextsearch.config? URLs to the problem pages?</p>\r\n<p>&nbsp;</p>\r\n<p>Bjorn</p>",
+    "PostedDate": "2011-08-08T02:38:19.333-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "654793",
+    "ThreadId": "267837",
+    "Html": "<p>Thanks for the ideas on what to try. I&acute;ve tried changing the XSLT back to the original + changed language to&nbsp;&lt;html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\"&gt; (charset has been utf-8 all the time). But it changes nothing, unfortunately.</p>\r\n<p>I you send me your email til me (umbraco@explizit.dk) I can send you more info: Macro,&nbsp;&nbsp;fulltextsearch.config? URLs to the problem pages and so on. (site isn&acute;t live yet so I would like to avoid sharing it here for now).</p>\r\n<p>&nbsp;</p>\r\n<p>But maybe it&acute;s just something unexplainable.... Maybe it helps when I move to production server - I think I will try waiting for that now. And if the problem persists I will try solving again.</p>\r\n<p>But I you will you are welcome to write me and I will send more info.</p>\r\n<p>&nbsp;</p>\r\n<p>Best regards,</p>\r\n<p>Martin</p>",
+    "PostedDate": "2011-08-08T13:56:50.72-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "729349",
+    "ThreadId": "267837",
+    "Html": "<p>Hi,</p>\n<p>I have the same Problem here with \"5\". After a few weeks with FullTextSearch I have results with highlighted \"5\" since yesterday. Don't know the reason.</p>\n<p>Some one an idea for a fix?</p>\n<p>Edit:</p>\n<p>Possible solution: <a href=\"http://fulltextsearch.codeplex.com/workitem/535\">http://fulltextsearch.codeplex.com/workitem/535</a></p>",
+    "PostedDate": "2012-01-23T08:17:06.127-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

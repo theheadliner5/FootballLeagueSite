@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "636140",
+    "ThreadId": "263603",
+    "Html": "\r\n<p>Does it only index HTML content or can, does it index PDFs and other files such as Word docs?</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2011-07-01T11:18:35.79-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "636401",
+    "ThreadId": "263603",
+    "Html": "<p>Currently Only HTML is supported directly. There are extensions for Examine/Lucene that do pdf/doc indexing, it might be possible to set those to use the same index as full text search. Theoretically you could then search both pdf and html content using our front end, but it's not something we've built in or currently support</p>",
+    "PostedDate": "2011-07-02T06:29:37.747-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

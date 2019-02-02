@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1069687",
+    "ThreadId": "450387",
+    "Html": "Hi Rigardt,<br />\n<br />\nI noticed something strange - the display on the footer of the search results page could be something like this:<br />\n&lt; Previous         1        Next &gt;<br />\nShowing 1-20 of 39 results. Search completed in 0.013 seconds. <br />\n<br />\nNotice that there should be a link for a second page - &quot;2&quot; to show results 21-39.<br />\n<br />\nI was able to fix it on line 191 of 'Search_Results.cshtml' with the following change:<br />\n<pre><code>var numPages = (int)resultsItem.Current.Evaluate(&quot;number(/results/summary/@numPages)&quot;)+1;</code></pre>\n\nbut this seems to be more of a band-aid, since I'd assume that the Evaluate function ought to be returning the correct number of pages.<br />\nHeather<br />\n",
+    "PostedDate": "2013-07-17T12:50:16.883-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1071126",
+    "ThreadId": "450387",
+    "Html": "Hi Heather\r<br />\n<br />\nThanks for this. I'll take a look and make sure the correct value is returned for numPages.\r<br />\n<br />\nRigardt\r<br />\nGovernor Technology<br />\n",
+    "PostedDate": "2013-07-22T01:25:00.01-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1071832",
+    "ThreadId": "450387",
+    "Html": "Hi Heather\r<br />\n<br />\nWe've released a new version which now has he correct value for numPages. Please refer to your appropriate version used: 4.7.1 / 4.8.1 / 6.0.1. It contains a minor update in the DLL as well as in FullTextSearch.cshtml.\r<br />\n<br />\nThanks for reporting on the issue!\r<br />\n<br />\nBest regards,\r<br />\nRigardt\r<br />\nGovernor Technology<br />\n",
+    "PostedDate": "2013-07-23T08:57:48.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1071925",
+    "ThreadId": "450387",
+    "Html": "Fantastic - Thanks!<br />\n",
+    "PostedDate": "2013-07-23T13:03:25.057-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1072148",
+    "ThreadId": "450387",
+    "Html": "If you want to apply the FullTextSearch.cshtml changes manually, below are the new lines:\r<br />\n<br />\nline 262: remove &quot;-1&quot;)             @for (var curPage = startPage; curPage &lt;= numPages &amp;&amp; curPage &lt; startPage + numNumbers; curPage++)\r<br />\n<br />\nline 276: remove &quot;-1&quot;)            @if (pageNumber &lt; numPages)<br />\n",
+    "PostedDate": "2013-07-24T01:28:51.487-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1072403",
+    "ThreadId": "450387",
+    "Html": "Got it, thanks!<br />\n<br />\nYes, it's fixed :-)<br />\n",
+    "PostedDate": "2013-07-24T10:15:57.01-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

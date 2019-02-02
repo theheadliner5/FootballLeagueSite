@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "842142",
+    "ThreadId": "357524",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>I read in the documentation that when setting up &#65279;....</p>\r\n<p>&quot;Note that Full Text Search does not currently support indexing unpublished or protected pages. So leave these settings at false.&quot;</p>\r\n<p>Does this mean that if the search form is within the protected area it still will not index the protected pages?</p>\r\n",
+    "PostedDate": "2012-05-29T09:26:19.717-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1063680",
+    "ThreadId": "357524",
+    "Html": "Hi oliverr\r<br />\n<br />\nIn short, yes. Full Text Search finds content by evaluating the rendered html in the frontend. For this reason, supporting indexing of protected pages is quite tricky to implement. This is mainly due to the number of different authentication mechanisms that sites can use and simulating authenticating some user. Honouring user roles and indexing content only available for specific roles can complicate things further. \r<br />\n<br />\nAs mentioned in the documentation, this is not currently supported, however this has been added as a future request. \r<br />\n<br />\nRegards,\r<br />\nRigardt\r<br />\nGovernor Technology<br />\n",
+    "PostedDate": "2013-07-02T09:30:46.82-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

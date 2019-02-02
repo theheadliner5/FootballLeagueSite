@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "840429",
+    "ThreadId": "356994",
+    "Html": "\r\n<p>I've installed FTS for Umbraco which is now working but it is only searching the title of the nodes. I need it to also search the body text. All the config documentation says that this should so by default, but it's not. What do I need to check change?</p>\r\n<p>Cheers</p>\r\n<p>Gus</p>\r\n",
+    "PostedDate": "2012-05-24T06:47:43.963-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

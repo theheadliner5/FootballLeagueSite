@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1149902",
+    "ThreadId": "483813",
+    "Html": "Hi,\r<br />\n<br />\nI was wondering, is this package fully compatible with Umbraco 7? We have it installed, and it seems to work just fine, with one minor exception. Content that is inserted into a page from a partial view seems to be ignored. Is there a solution for this?\r<br />\n<br />\nKind regards,\r<br />\n<br />\n-Ferdy<br />\n",
+    "PostedDate": "2014-01-06T04:13:54.477-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1149905",
+    "ThreadId": "483813",
+    "Html": "Hi Ferdy\r<br />\n<br />\nUnfortunately FullTextSearch has not been tested for Umbraco 7 compatibility yet. I will add this to the to-do list but cannot say exactly when this will be available at this stage. Until then, feel free to have a look at the source if you prefer to see if you can solve this issue before then.\r<br />\n<br />\nRegards,\r<br />\nRigardt<br />\n",
+    "PostedDate": "2014-01-06T04:19:27.087-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1149906",
+    "ThreadId": "483813",
+    "Html": "Alrighty, I shall see if I have time to check this out. Thanks for the speedy reply!\r<br />\n<br />\n-Ferdy<br />\n",
+    "PostedDate": "2014-01-06T04:26:17.273-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1186789",
+    "ThreadId": "483813",
+    "Html": "Hi Ferdy,\r<br />\n<br />\nAny progress?\r<br />\nI am in need of a search function on my Umbraco 7.0.1 installation so I would be very grateful for any ideas on how to proceed.\r<br />\n<br />\nKind Regards\r<br />\nFredrik<br />\n",
+    "PostedDate": "2014-01-21T01:58:38.97-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1215638",
+    "ThreadId": "483813",
+    "Html": "Hello,\r<br />\n<br />\nWith Umbraco 7.0.3 FullTextSearch is working fine. The content which is rendered through (nested) partial views is also found.\r<br />\n<br />\nRegards,\r<br />\n<br />\nJohn<br />\n",
+    "PostedDate": "2014-02-27T06:24:27.78-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

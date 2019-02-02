@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "Hi,\r\n\r\nI am not able to search the body of Umbraco Pages using Umbraco Full Text Search, presumably because I am getting the following error (from the App_Data/Logs.UmbracoTraceLog.v-terrycl-Len2.txr  file):\r\n\r\n 2017-09-14 22:16:36,288 [P22372/D2/T78] ERROR Governor.Umbraco.FullTextSearch.Renderers.DefaultHttpRenderer - Error rendering node using Http Renderer.\r\nSystem.ArgumentException: The specified value is not a valid Host header string.\r\n   at System.Net.HttpWebRequest.set_Host(String value)\r\n   at Governor.Umbraco.FullTextSearch.Utilities.Library.HttpRenderNode(Int32 pageId, Dictionary`2 cookieDictionary, String& fullHtml)\r\n   at Governor.Umbraco.FullTextSearch.Renderers.DefaultHttpRenderer.RetrieveHtml(String& fullHtml)\r\n\r\n\r\nAny assistance understanding and resolving this issue would be appreciated.\r\n\r\nThanks\r\n\r\nTerry Clancy\r\nClanceZ\r\n",
+    "LastUpdatedDate": "2017-09-17T17:03:15.7-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "fulltextsearch",
+    "ReportedDate": "2017-09-15T00:01:36.907-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Umbraco Full Text Search Error rendering node using Http Renderer",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1279
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "\nOK. I solved this issue. It turns out I made a basic mistake. I had the following error in FullTestSearch.config  \n\n<HttpUrl>http://localhost/</HttpUrl>    \n\nBecause I was debugging in Visual Studio this should have been set to:\n\n<HttpUrl>http://localhost:32525/</HttpUrl>     \n\nThanks\n\nTerry Clancy\nClanceZ\n",
+      "PostedDate": "2017-09-17T17:03:15.7-07:00",
+      "Id": 208812
+    }
+  ]
+}

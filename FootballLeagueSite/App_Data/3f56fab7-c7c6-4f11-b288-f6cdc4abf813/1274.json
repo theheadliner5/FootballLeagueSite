@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "A simple * breaks the macro razor script. Otherwise this works great with version 7.2.4 of Umbraco. I appreciate all the work you put into this.",
+    "LastUpdatedDate": "2016-01-15T01:47:24.527-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "fulltextsearch",
+    "ReportedDate": "2015-07-28T14:02:59.227-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Wildcard breaks the razor script",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 1274
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I found that setting useWildcards=\"0\" makes it function as desired though.",
+      "PostedDate": "2015-07-28T14:09:17.06-07:00",
+      "Id": 187825
+    }
+  ]
+}

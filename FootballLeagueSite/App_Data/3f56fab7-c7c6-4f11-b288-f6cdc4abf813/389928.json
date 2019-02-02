@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "894434",
+    "ThreadId": "389928",
+    "Html": "Umbraco 4.8 has switched from Lucene.Net v2.9.2.2 to v2.9.4.1. Full Text Search does not work with the new version. Any plans to support it anytime soon?",
+    "PostedDate": "2012-08-01T19:56:42.393-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "894757",
+    "ThreadId": "389928",
+    "Html": "<p><strong>How to patch the source code</strong></p>\r\n<p><strong>1)&nbsp; In the \"Other DLLs\" folder, replace Lucene.Net.dll and Hilighter.Net.dll with the new versions.&nbsp; </strong><br />- Hilighter.net is here http://www.apache.org/dist/incubator/lucene.net/binaries/2.9.4-incubating/<br />- The file you are looking for is /bin/Contrib/Lucene.Net.Contrib.Highlighter.dll</p>\r\n<p><strong>2) In the \"Umbraco DLLs\" folder, replace everything with versions from Umbraco 4.8.</strong></p>\r\n<p><strong>3) Edit Line 48 in hilight.cs.&nbsp; New value should be:</strong></p>\r\n<p style=\"padding-left: 30px;\">this.searcher = (searchProvider as LuceneSearcher).GetSearcher() as IndexSearcher;</p>\r\n<p><strong>4) Edit lines 32 and 33 in fullcontentindexer.cs.&nbsp; New values should be:</strong></p>\r\n<p style=\"padding-left: 30px;\">public FullTextContentIndexer(IIndexCriteria indexerData, DirectoryInfo indexPath, IDataService dataService, Analyzer analyzer, bool async)<br />: base(indexerData, indexPath, dataService, analyzer, async) { }</p>\r\n<p><strong>5) Add 2 new using statements to </strong><strong>fullcontentindexer.cs</strong></p>\r\n<p style=\"padding-left: 30px;\">using Lucene.Net.Analysis;<br />using UmbracoExamine.DataServices;</p>\r\n<p><strong>6)&nbsp; In the \"Other DLLs\" folder, replace HtmlAgilityPack.dll with the version from Umbraco 4.8</strong></p>\r\n<p style=\"padding-left: 30px;\"><strong><br /></strong></p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-08-02T09:07:48.493-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1063679",
+    "ThreadId": "389928",
+    "Html": "Hi molund\r<br />\n<br />\nWe've released three new versions of the package - compatible with the various Umbraco versions, including 4.8. Please grab the the correct version from the downloads page.\r<br />\n<br />\nBest regards,\r<br />\nRigardt\r<br />\nGovernor Technology.<br />\n",
+    "PostedDate": "2013-07-02T09:28:03.817-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1103308",
+    "ThreadId": "461076",
+    "Html": "Is there any source code for the DLL available?  This is <strong>Code</strong> Plex... need to understand what's going on in my search.<br />\n",
+    "PostedDate": "2013-10-03T11:34:30.34-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1103536",
+    "ThreadId": "461076",
+    "Html": "Hi IDisposable\r<br />\n<br />\nHave you tried using the Source Code tab above? You should be able to clone/download it from there. Let me know if you have any issues with getting hold of this.\r<br />\n<br />\nRegards,\r<br />\nRigardt<br />\n",
+    "PostedDate": "2013-10-04T01:49:11.44-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2013-10-07T01:16:04.09-07:00"
+  },
+  {
+    "Id": "1103722",
+    "ThreadId": "461076",
+    "Html": "I'm a moron and forgot to switch branches (you've got nothing in the master tag)... sorry<br />\n",
+    "PostedDate": "2013-10-04T09:48:55.25-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

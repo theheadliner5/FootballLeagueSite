@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "993226",
+    "ThreadId": "431150",
+    "Html": "\r\n<p>Does anyone have a&nbsp;equivalent&nbsp;Razor Script file that can be&nbsp;swapped&nbsp;in for the&nbsp;FullTextSearch.xslt code? &nbsp;This one one of the last XSLT marcos we have an'd i love to get it&nbsp;swapped&nbsp;out so we dont need developers that\r\n understand XSLT in addition to Razor.</p>\r\n",
+    "PostedDate": "2013-01-28T11:50:35.01-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "993677",
+    "ThreadId": "431150",
+    "Html": "\r\n<p>Never mind. &nbsp;I converted it myself. &nbsp;http://pynej.blogspot.com/2013/01/umbraco-full-text-search-razor-script.html</p>\r\n",
+    "PostedDate": "2013-01-29T07:15:56.367-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1063665",
+    "ThreadId": "431150",
+    "Html": "Hi pynej\r<br />\n<br />\nThanks for providing the Razor script. We've released new versions supporting all recent versions of Umbraco. We've included the Razor script which is largely based on your original version and have credited you in the script :)\r<br />\n<br />\nMany thanks,\r<br />\nRigardt\r<br />\nGovernor Technology<br />\n",
+    "PostedDate": "2013-07-02T08:59:24.65-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "This issue has been resolved.",
+    "ClosedDate": "2013-07-03T03:18:37.377-07:00",
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "",
+    "LastUpdatedDate": "2013-07-03T03:18:37.377-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "fulltextsearch",
+    "ReportedDate": "2012-01-24T01:41:17.597-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Incorrect search results with thread cultures with comma as decymal symbol",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 535
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Hi Wurstie, I am italian, then I look the same issue with a my project.\r\n\r\nI had solved this issue, and add other features to project.\r\nProbably it be possible to download the new version soon.",
+      "PostedDate": "2012-02-03T08:57:01.867-08:00",
+      "Id": 105454
+    },
+    {
+      "Message": "Hi Wurstie\r\n\r\nThanks for reporting the issue as well as a possible fix.\r\n\r\nWe've releases a new version including a fix for this issue.\r\n\r\nBest regards,RigardtGovernor Technology",
+      "PostedDate": "2013-07-03T03:14:33.907-07:00",
+      "Id": 105455
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "810186",
+    "ThreadId": "348555",
+    "Html": "\r\n<p>I have a site with structure like</p>\r\n<ul>\r\n<li>Root node 1\r\n<ul>\r\n<li>Client 1's node\r\n<ul>\r\n<li>Content of client 1 </li></ul>\r\n</li><li>Client 2's node\r\n<ul>\r\n<li>Content of client 2 </li></ul>\r\n</li><li>Client 3's node\r\n<ul>\r\n<li>Content of client 3 </li></ul>\r\n</li></ul>\r\n</li><li>Root node 2\r\n<ul>\r\n<li>Some other client's nodes </li></ul>\r\n</li></ul>\r\n<p>From the structure you can see each client has own node, so when user visits each client's content and performs search I would like to restrict the search result within the client's node.</p>\r\n<p>Is it possible?</p>\r\n<p>Thanks</p>\r\n<p>Hardy</p>\r\n",
+    "PostedDate": "2012-03-14T06:04:09.353-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

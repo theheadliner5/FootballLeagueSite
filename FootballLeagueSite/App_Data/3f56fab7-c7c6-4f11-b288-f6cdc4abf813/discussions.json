@@ -1,0 +1,187 @@
+[
+  {
+    "Id": "263603",
+    "Title": "Does it index media, i.e. PDFs?",
+    "LatestDate": "2011-07-02T06:29:37.747-07:00"
+  },
+  {
+    "Id": "264116",
+    "Title": "Umbraco Full Text Search",
+    "LatestDate": "2011-07-06T11:36:01.063-07:00"
+  },
+  {
+    "Id": "264168",
+    "Title": "Crawling",
+    "LatestDate": "2011-07-11T02:13:46.833-07:00"
+  },
+  {
+    "Id": "265853",
+    "Title": "web service acess",
+    "LatestDate": "2011-07-22T03:13:30.677-07:00"
+  },
+  {
+    "Id": "267837",
+    "Title": "How to get useWildcards to work",
+    "LatestDate": "2012-01-23T08:17:06.127-08:00"
+  },
+  {
+    "Id": "269460",
+    "Title": "Example on how to setup scheduled indexing",
+    "LatestDate": "2011-08-19T14:36:36.11-07:00"
+  },
+  {
+    "Id": "287363",
+    "Title": "Full text search configuration",
+    "LatestDate": "2012-01-25T07:27:47.77-08:00"
+  },
+  {
+    "Id": "287371",
+    "Title": "using Wildcard and fuzzyness",
+    "LatestDate": "2012-01-25T07:53:34.933-08:00"
+  },
+  {
+    "Id": "348555",
+    "Title": "Restrict Search Scope",
+    "LatestDate": "2012-03-14T06:04:09.353-07:00"
+  },
+  {
+    "Id": "350247",
+    "Title": "Pagination ",
+    "LatestDate": "2012-03-27T15:02:33.72-07:00"
+  },
+  {
+    "Id": "351660",
+    "Title": "What about multilingual sites?",
+    "LatestDate": "2012-09-06T05:24:22.99-07:00"
+  },
+  {
+    "Id": "354213",
+    "Title": "index problem",
+    "LatestDate": "2012-05-04T02:12:38.547-07:00"
+  },
+  {
+    "Id": "356994",
+    "Title": "FTS Configuration",
+    "LatestDate": "2012-05-24T06:47:43.963-07:00"
+  },
+  {
+    "Id": "357365",
+    "Title": "Is anybody there? - No support response",
+    "LatestDate": "2013-07-02T09:34:13.987-07:00"
+  },
+  {
+    "Id": "357524",
+    "Title": "Searching within secure area",
+    "LatestDate": "2013-07-02T09:30:46.82-07:00"
+  },
+  {
+    "Id": "389928",
+    "Title": "Umbraco 4.8 support",
+    "LatestDate": "2013-07-02T09:28:03.817-07:00"
+  },
+  {
+    "Id": "394629",
+    "Title": "search for language other than english",
+    "LatestDate": "2012-09-06T05:22:22.52-07:00"
+  },
+  {
+    "Id": "404229",
+    "Title": "Dictionary and properties",
+    "LatestDate": "2012-11-22T06:22:16.283-08:00"
+  },
+  {
+    "Id": "404345",
+    "Title": "Create second indexer with unpublished nodes",
+    "LatestDate": "2012-11-23T03:41:34.437-08:00"
+  },
+  {
+    "Id": "404712",
+    "Title": "Result sort",
+    "LatestDate": "2012-11-27T03:12:30.513-08:00"
+  },
+  {
+    "Id": "431150",
+    "Title": "Razor Macro",
+    "LatestDate": "2013-07-02T08:59:24.65-07:00"
+  },
+  {
+    "Id": "449488",
+    "Title": "Does DefaultRenderer=HTTP work with multiple domain names?",
+    "LatestDate": "2013-07-24T10:15:24.657-07:00"
+  },
+  {
+    "Id": "449499",
+    "Title": "Missing search result \"summary\" text?",
+    "LatestDate": "2013-07-24T10:40:58.453-07:00"
+  },
+  {
+    "Id": "450387",
+    "Title": "Search Results Paging Short by 1 Page",
+    "LatestDate": "2013-07-24T10:15:57.01-07:00"
+  },
+  {
+    "Id": "457073",
+    "Title": "Unable to get it to index anything other than the name of the name of the document",
+    "LatestDate": "2013-10-18T04:39:50.06-07:00"
+  },
+  {
+    "Id": "461076",
+    "Title": "Source code?",
+    "LatestDate": "2013-10-04T09:48:55.25-07:00"
+  },
+  {
+    "Id": "473444",
+    "Title": "Trouble setting up RebuildFullTextIndex",
+    "LatestDate": "2013-12-16T01:47:18.213-08:00"
+  },
+  {
+    "Id": "483813",
+    "Title": "Umbraco 7 and ignored partial view content",
+    "LatestDate": "2014-02-27T06:24:27.78-08:00"
+  },
+  {
+    "Id": "577426",
+    "Title": "Umbraco 7.2.1 - setting rootNode to anything will return empty result set",
+    "LatestDate": "2015-01-11T14:05:48.18-08:00"
+  },
+  {
+    "Id": "578332",
+    "Title": "Scheduled reindex on v7.0.2",
+    "LatestDate": "2015-01-22T04:14:18.72-08:00"
+  },
+  {
+    "Id": "639129",
+    "Title": "Index specific pages programattically",
+    "LatestDate": "2015-06-03T07:35:15.68-07:00"
+  },
+  {
+    "Id": "639860",
+    "Title": "Search in meta tags",
+    "LatestDate": "2015-07-20T18:44:57.833-07:00"
+  },
+  {
+    "Id": "642104",
+    "Title": "Search through GRId content via Full Text Search",
+    "LatestDate": "2015-07-29T02:25:44.327-07:00"
+  },
+  {
+    "Id": "656517",
+    "Title": "Fulltextsearch for chinese Searchwords",
+    "LatestDate": "2016-07-18T07:52:14.693-07:00"
+  },
+  {
+    "Id": "656777",
+    "Title": "Uninstalling Fulltext package- Umbraco 4.7.2",
+    "LatestDate": "2016-09-29T07:52:31.21-07:00"
+  },
+  {
+    "Id": "656802",
+    "Title": "searchResult.Evaluate causing exception 'object' does not contain a definition for 'Evaluate'",
+    "LatestDate": "2016-07-29T14:43:32.367-07:00"
+  },
+  {
+    "Id": "660099",
+    "Title": "Trouble installing",
+    "LatestDate": "2016-12-12T13:31:51.673-08:00"
+  }
+]

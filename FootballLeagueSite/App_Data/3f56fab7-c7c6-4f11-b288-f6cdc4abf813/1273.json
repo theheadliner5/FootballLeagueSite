@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi\r\n\r\nWe found out that all the parsing is done without specifying the culture.\r\n\r\nThat has an effect that if you call SearchExtension.Search with fuzzy value of \"0.8\" that value gets parsed to 0.8 if the current culture is en. But a problem occurs if the current culture is let say sl-SI and the value \"0.8\" gets parsed to 8 and produces an incorrect search. The same parsing is used through the whole project.\r\n\r\nAs we understand the parsing of the fuzzy variable from string to double and the config values should be done with the CultureInfo.InvariantCulture. Something like this:\r\n\r\n```\r\ndouble.TryParse(fuzzieness, NumberStyles.Number, CultureInfo.InvariantCulture, out fuzzy)\r\n```",
+    "LastUpdatedDate": "2016-01-15T01:47:28.9-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "fulltextsearch",
+    "ReportedDate": "2015-01-05T07:49:26.997-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Parsing numbers of type double",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 1273
+  },
+  "FileAttachments": [],
+  "Comments": []
+}
