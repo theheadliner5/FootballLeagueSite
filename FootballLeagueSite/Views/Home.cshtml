@@ -18,10 +18,6 @@
     </div>
 </section>
 
-<section class="section section">
-    @Html.GetGridHtml(Model.Content, "bodyText", "bootstrap3-fluid")
-</section>
-
  <!-- MatchList -->
         <div ng-controller="matchCtrl">
             <div class="row">
@@ -271,22 +267,9 @@
             </div>
             </div>
             <!-- MatchList -->
-<section class="section section--themed">
-
-    <div class="container">
-        <div class="row">
-
-            <div class="ta-center">
-                <h2>@Model.Content.FooterHeader</h2>
-                <p class="section__description mw-640 ma-h-auto">@Model.Content.FooterDescription</p>
-
-                <a class="button button--border--light_solid" href="@Model.Content.FooterCtalink.Url">
-                    @Model.Content.FooterCtacaption
-                </a>
-
-            </div>
-
-        </div>
-    </div>
-
+            
+            
+        <section class="section section">
+            @Html.GetGridHtml(Model.Content, "bodyText", "bootstrap3-fluid")
+        </section>
 </section>
