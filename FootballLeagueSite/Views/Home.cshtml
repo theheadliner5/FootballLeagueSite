@@ -78,7 +78,8 @@
                                         </div>
                                         
                                         <div class="col-2">
-                                            <p ng-if="obj.match_status"><a href="/match-list-page/[[ obj.match_id ]]/">Wiecej</a></p>
+                                            <!--<p ng-if="obj.match_status"><a href="/match-list-page/[[ obj.match_id ]]/">Wiecej</a></p>-->
+                                            <p ng-if="obj.match_status"><a href="umbraco/api/match/getMatchPageAsync?id=[[ obj.match_id ]]">Wiecej</a></p>
                                             <p ng-if="!obj.match_status">Brak</p>
                                         </div>
             
