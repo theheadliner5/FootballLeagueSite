@@ -30,8 +30,8 @@ namespace FootballLeagueSite.Controllers
                     content.ReleaseDate = publishDate;
                     content.CreateDate = publishDate;
                     content.UpdateDate = publishDate;
-                    content.SetValue("pageTitle", id);
-                    content.SetValue("matchTextArea", table.ToString());
+                    content.SetValue("pageTitle", table.match_hometeam_name + " vs " + table.match_awayteam_name + " " + table.match_date);
+                    content.SetValue("matchMarkdown", table);
                     var result = contentService.SaveAndPublishWithStatus(content);
                 }
             }
