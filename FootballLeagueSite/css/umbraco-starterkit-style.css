@@ -1107,7 +1107,7 @@ body.theme-color-sun--active.nav-link:visited, body.theme-color-sun .border-main
 }
 
 .product-grid__item:hover body.theme-color-earth .product-grid__item__name, .product-grid__item:hover body.theme-color-earth .product-grid__item__price, body.theme-color-earth .bg-main-color, body.theme-color-earth .button--border--solid, body.theme-color-earth .mobile-nav, body.theme-color-earth .product-grid__item:hover .product-grid__item__name, body.theme-color-earth .product-grid__item:hover .product-grid__item__price, body.theme-color-earth .section--themed {
-    background-color: #e7afa3;
+    background-color: #59e593;
     color: #000
 }
 
